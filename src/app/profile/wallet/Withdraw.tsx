@@ -1,8 +1,9 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import {supabase} from "@/src/hooks/supabaseClient";
-import {CustomSelect} from "@/src/components/ui/CustomSelect";
+import { useEffect, useState } from "react";
+import { supabase } from "@/src/hooks/supabaseClient";
+import { CustomSelect } from "@/src/components/ui/CustomSelect";
+import { toast } from "react-toastify";
 
 interface SavedCard {
     id: string;
@@ -12,32 +13,36 @@ interface SavedCard {
 
 type WithdrawMethod = "card" | "idram" | "telcell";
 
+const withdrawMethodOptions: {
+    value: WithdrawMethod;
+    label: string;
+}[] = [
+    { value: "card", label: "MasterCard / Visa" },
+    { value: "idram", label: "Idram" },
+    { value: "telcell", label: "Telcell" },
+];
 
-export default function Withdraw({onCloseAction,}: { onCloseAction: () => void }) {
+export default function Withdraw({
+                                     onCloseAction,
+                                 }: {
+    onCloseAction: () => void;
+}) {
     const [amount, setAmount] = useState("");
-    const [method, setMethod] = useState<WithdrawMethod>('card');
+    const [method, setMethod] = useState<WithdrawMethod>("card");
     const [cards, setCards] = useState<SavedCard[]>([]);
     const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
-    const [msg, setMsg] = useState("");
     const [loading, setLoading] = useState(false);
-
-    const withdrawMethodOptions = [
-        { value: "card", label: "MasterCard / Visa" },
-        { value: "idram", label: "Idram" },
-        { value: "telcell", label: "Telcell" },
-    ];
-
 
 
     useEffect(() => {
         (async () => {
-            const {data: u} = await supabase.auth.getUser();
-            if (!u?.user) return;
+            const { data: userData } = await supabase.auth.getUser();
+            if (!userData?.user) return;
 
-            const {data} = await supabase
+            const { data } = await supabase
                 .from("cards")
                 .select("id, brand, last4")
-                .eq("user_id", u.user.id);
+                .eq("user_id", userData.user.id);
 
             setCards(data || []);
             setSelectedCardId(data?.[0]?.id ?? null);
@@ -47,26 +52,32 @@ export default function Withdraw({onCloseAction,}: { onCloseAction: () => void }
     const submitWithdraw = async () => {
         if (loading) return;
 
-        const {data: session} = await supabase.auth.getSession();
+        const { data: session } = await supabase.auth.getSession();
         const userId = session?.session?.user?.id;
+
         if (!userId) {
-            alert("Not authorized");
+            toast.error("Դուք մուտք գործած չեք");
             return;
         }
 
         const parsedAmount = Number(amount);
         if (!parsedAmount || parsedAmount <= 0) {
-            alert("Մուտքագրիր ճիշտ գումար");
+            toast.warn("Մուտքագրիր ճիշտ գումար");
+            return;
+        }
+
+        if (method === "card" && !selectedCardId) {
+            toast.warn("Ընտրիր քարտ կամ ավելացրու նոր քարտ");
             return;
         }
 
         setLoading(true);
 
         try {
-            // 1️⃣ withdraw backend (ստեղծում է withdraw_requests + transactions)
+            // 1️⃣ Ստեղծում ենք withdraw request
             const res = await fetch("/api/withdraw", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     user_id: userId,
                     amount: parsedAmount,
@@ -78,33 +89,34 @@ export default function Withdraw({onCloseAction,}: { onCloseAction: () => void }
             const json = await res.json();
 
             if (!res.ok || !json.success) {
-                alert(json.error || "Կանխիկացման սխալ");
+                toast.error(json.error || "Կանխիկացման սխալ");
                 return;
             }
 
-            // 2️⃣ ❗ ՔՈ notify-ն — ՉԵՄ ՀԱՆԵԼ
+            // 2️⃣ Տելեգրամ նոթիֆիկացիա ադմինին
             await fetch("/api/notify-withdraw", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    withdrawId: json.withdrawId ?? null,
+                    withdrawId: json.withdrawId,
                     userId,
                     amount: parsedAmount,
                     method,
                 }),
             });
 
-            alert("Կանխիկացման հարցումը ուղարկվեց");
+            toast.success("✅ Կանխիկացման հարցումը ուղարկվեց");
             onCloseAction();
-        } catch (e) {
-            alert("Սերվերի սխալ");
+        } catch (err) {
+            toast.error("Սերվերի սխալ");
         } finally {
             setLoading(false);
         }
-    }
-        return (
+    };
+
+    return (
         <div className="withdraw">
-            <h3 style={{margin: '15px 0'}}>Կանխիկացում</h3>
+            <h3 style={{ margin: "15px 0" }}>Կանխիկացում</h3>
 
             <CustomSelect
                 name="withdrawMethod"
@@ -113,17 +125,18 @@ export default function Withdraw({onCloseAction,}: { onCloseAction: () => void }
                 options={withdrawMethodOptions}
                 onChange={(_, value) => {
                     setMethod(value as WithdrawMethod);
-                    setSelectedCardId(null); // մեթոդ փոխելիս reset
+                    setSelectedCardId(null);
                 }}
             />
 
-
             {method === "card" && (
                 <div className="cards">
-                    {cards.map(c => (
+                    {cards.map((c) => (
                         <div
                             key={c.id}
-                            className={`card ${selectedCardId === c.id ? "active" : ""}`}
+                            className={`card ${
+                                selectedCardId === c.id ? "active" : ""
+                            }`}
                             onClick={() => setSelectedCardId(c.id)}
                         >
                             {c.brand} •••• {c.last4}
@@ -131,26 +144,32 @@ export default function Withdraw({onCloseAction,}: { onCloseAction: () => void }
                     ))}
                 </div>
             )}
+
             <label>
                 <input
                     type="number"
                     placeholder="Գումար (AMD)"
                     value={amount}
-                    onChange={e => setAmount(e.target.value)}
+                    onChange={(e) => setAmount(e.target.value)}
                 />
             </label>
-            <div style={{margin: '15px 0'}} className={'btn-withdraw'}>
-                <button style={{
-                    padding: "10px 30px",
-                }} onClick={submitWithdraw}>Հաստատել
+
+            <div style={{ margin: "15px 0" }} className="btn-withdraw">
+                <button
+                    style={{ padding: "10px 30px" }}
+                    onClick={submitWithdraw}
+                    disabled={loading}
+                >
+                    {loading ? "..." : "Հաստատել"}
                 </button>
-                <button style={{
-                    padding: "10px 30px",
-                }} onClick={onCloseAction}>Փակել
+
+                <button
+                    style={{ padding: "10px 30px" }}
+                    onClick={onCloseAction}
+                >
+                    Փակել
                 </button>
             </div>
-            {msg && <p>{msg}</p>}
         </div>
     );
 }
-
