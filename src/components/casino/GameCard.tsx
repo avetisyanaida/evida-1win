@@ -56,7 +56,17 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
 
     const handleCardClick = () => isMobile && setIsModalOpen(true);
     const handlePlay = () => console.log("PLAY:", game.title);
-    const handleDemo = () => setIsDemoOpen(true);
+    const handleDemo = () => {
+        if (!game.demoUrl) return;
+
+        if (isMobile) {
+            window.location.href = game.demoUrl; // կամ "_blank"
+        } else {
+            setIsDemoOpen(true); // desktop modal
+        }
+    };
+
+
 
 
     return (
@@ -94,7 +104,7 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
                 </ModalComponent>
             )}
 
-            {isDemoOpen && (
+            {isDemoOpen && !isMobile &&(
                 <ModalComponent
                     title={`${game.title}`}
                     onClose={() => setIsDemoOpen(false)}
