@@ -1,0 +1,85 @@
+@use '../../mixin' as *;
+.tabs-component {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin: 20px 0;
+  padding: 30px 20px;
+  border-radius: 10px;
+  background-color: #18133b;
+
+  .providers-btn {
+    padding: 15px 35px;
+    background-color: #292E57FF;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    width: 18%;
+    @include screen-max-width-1200 {
+      width: 100%;
+    }
+    &:hover {
+      background-color: #0d0b25;
+      transition: background-color .3s;
+    }
+    i {
+      background-color: white;
+      font-size: 18px;
+    }
+  }
+  .tabs-component-list {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+    background-color: #292E57FF;
+    border-radius: 10px;
+    width: 81%;
+    li {
+      button {
+        background-color: transparent;
+        color: white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 10px;
+        &:hover {
+          background-color: #0d0b25;
+          transition: background-color .3s;
+        }
+      }
+    }
+  }
+}
+.all-providers {
+  background-color: #18133b;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    li {
+      button {
+        padding: 10px 30px;
+        cursor: pointer;
+        background-color: #292D56FF;
+        border-radius: 10px;
+        color: white;
+        border: none;
+        &:hover {
+          background-color: #0d0b25;
+          transition: background-color .3s;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../mixin' as *;
+h2 {
+  text-align: center;
+  font-size: 40px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  position: relative;
+  margin: 10px 0;
+  p {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    background-color: #5244a6;
+    border-radius: 20px;
+    padding: 5px;
+    color: white;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #5244a6;
+    background-color: #18133b;
+    color: white;
+  }
+  .error {
+    border: 2px solid red;
+  }
+}
+.forgot-pass {
+  margin: 20px 0;
+  text-align: end;
+  cursor: pointer;
+  color: white;
+}
+.login-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  border-radius: 10px;
+
+  button {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #18133b;
+    border: none;
+  }
+}
+.forgot-password {
+  p {
+    color: white;
+  }
+  button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: white;
+    color: #2b1f72;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    @include screen-max-width-767 {
+      padding: 5px 10px;
+    }
+  }
+}

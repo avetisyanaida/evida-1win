@@ -1,0 +1,108 @@
+@use '../../mixin' as *;
+
+.attach-card-modal {
+  margin-top: 40px;
+  background-color: #211a4f;
+  padding: 20px;
+  border-radius: 20px;
+  .attach-card-content {
+    h2 {
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      margin: 20px;
+      @include screen-max-width-767 {
+        font-size: 18px;
+      }
+    }
+    .card-left {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      margin: 30px 0;
+      background: #18133b;
+      padding: 15px;
+      width: 300px;
+      border-radius: 10px;
+      @include screen-max-width-767 {
+        width: 100%;
+      }
+      p {
+        font-size: 15px;
+        color: white;
+      }
+      button {
+        cursor: pointer;
+      }
+    }
+    .add-card-btn {
+      padding: 10px 30px;
+      margin: 0 5px 5px 0;
+      border-radius: 8px;
+      background-color: #211a4f;
+      color: white;
+      cursor: pointer;
+    }
+    .close-card-btn {
+      padding: 10px 30px;
+      border-radius: 8px;
+      background-color: #211a4f;
+      color: white;
+      cursor: pointer;
+    }
+    .user-cards-list {
+      background-color: #18133b;
+      padding: 20px;
+      border-radius: 20px;
+      color: white;
+      ul {
+        li {
+          width: 300px;
+          border-radius: 10px;
+          //padding: 20px;
+          align-items: flex-start;
+          .card-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+          }
+          .delete-card {
+            border-radius: 10px;
+            background-color: #211a4f;
+            color: white;
+            cursor: pointer;
+            border: none;
+            padding: 10px 30px;
+          }
+        }
+      }
+      .close-btn {
+        padding: 10px 30px;
+        border-radius: 10px;
+        background-color: #211a4f;
+        color: white;
+        cursor: pointer;
+        border: none;
+        margin-top: 30px;
+      }
+    }
+    .fade-text {
+      font-size: 40px;
+      font-weight: bold;
+      color: #b2aeae;
+      margin-bottom: 30px;
+      @include screen-max-width-1200 {
+        font-size: 20px;
+      }
+    }
+    .close-btn {
+      padding: 10px 30px;
+      border-radius: 10px;
+      background-color: #2b1f72;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+  }
+}

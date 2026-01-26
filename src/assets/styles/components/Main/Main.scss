@@ -1,0 +1,31 @@
+@use '../../variables' as *;
+.main-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  .logo {
+    width: 295px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    a {
+      color: white;
+    }
+    button {
+      padding: 15px 45px;
+      background-color: #FFCC00FF;
+      border-radius: 10px;
+      font-size: 18px;
+      color: $white;
+      cursor: pointer;
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use '../../mixin' as *;
+
+.header-menu {
+  background-color: #18133b;
+  padding: 20px 0;
+  margin: 10px 0;
+  ul {
+    display: flex;
+    gap: 40px;
+    li {
+      position: relative;
+      button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 22px;
+        @include screen-max-width-1200 {
+          font-size: 16px;
+        }
+        &::before {
+          position: absolute;
+          content: '';
+          width: 0;
+          height: 4px;
+          background-color: #d2c81b;
+          top: 40px;
+          left: 0;
+          transition: width 0.3s;
+        }
+        &:hover::before {
+          width: 100%;
+          transition: width 0.3s;
+        }
+      }
+    }
+  }
+}

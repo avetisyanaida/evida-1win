@@ -1,0 +1,126 @@
+@use '../../mixin' as *;
+
+.personal-details {
+  background-color: #0d0c25;
+  padding: 40px;
+  border-radius: 10px;
+  width: 75%;
+  margin: auto;
+  @include screen-max-width-767 {
+    width: 100%;
+    padding: 20px;
+  }
+  .personal-details-tab {
+    margin-bottom: 30px;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li {
+        button {
+          padding: 15px 30px;
+          background-color: #18133b;
+          color: white;
+          cursor: pointer;
+          border: none;
+          &:hover {
+            background-color: #211a4f;
+          }
+          &.active {
+            background-color: #2b1f72;
+          }
+        }
+
+        &:first-child button {
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
+        &:last-child button {
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+      }
+    }
+  }
+  .passwords-info {
+    width: 364px;
+    margin: auto;
+    @include screen-max-width-567 {
+      width: 100%;
+    }
+    i {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  }
+  .personal-details-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    .details-info-item {
+      width: calc(50% - 10px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      @include screen-max-width-767 {
+        width: 100%;
+      }
+      label {
+        width: 100%;
+        height: 40px;
+        margin: 0;
+        position: relative;
+
+        input {
+          width: 100%;
+          height: 100%;
+          font-size: 14px;
+        }
+        select {
+          height: 40px;
+          border-radius: 10px;
+          background-color: #18133b;
+          color: #a8a6a6;
+          border: 1px solid #5244a6;
+          option {
+            height: 40px;
+            border-radius: 10px;
+            padding: 20px;
+          }
+        }
+      }
+      .birth-day {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+    }
+  }
+  .save-infos-personal {
+    padding: 15px 30px;
+    cursor: pointer;
+    background-color: #2b1f72;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+  }
+  .passwords-info {
+    label {
+      input {
+        &::placeholder {
+          font-size: 14px;
+        }
+        font-size: 14px;
+      }
+    }
+  }
+}

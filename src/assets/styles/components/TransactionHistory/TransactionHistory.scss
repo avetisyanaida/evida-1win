@@ -1,0 +1,120 @@
+@use '../../variables' as *;
+@use '../../mixin' as *;
+
+.tx-table-wrap {
+  margin-top: 20px;
+
+  @include screen-max-width-567 {
+    margin-top: 10px;
+  }
+
+  h2 {
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    color: white;
+    border-bottom: 2px solid white;
+
+    @include screen-max-width-567 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+  }
+}
+
+.tx-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0d0b25;
+  border-radius: 10px;
+  overflow: hidden;
+
+  @include screen-max-width-567 {
+    border-radius: 8px;
+  }
+
+  thead {
+    @include screen-max-width-567 {
+      display: none;
+    }
+  }
+
+  th {
+    background: #141235;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    color: #aaa;
+
+    @include screen-max-width-567 {
+      display: none;
+    }
+  }
+
+  tr {
+    @include screen-max-width-567 {
+      display: block;
+      margin-bottom: 12px;
+      border: 1px solid #1e1b4b;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+  }
+
+  td {
+    padding: 12px;
+    font-size: 14px;
+    border-top: 1px solid #1e1b4b;
+    color: white;
+
+    @include screen-max-width-567 {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 8px;
+      font-size: 13px;
+      border: none;
+    }
+
+    &::before {
+      @include screen-max-width-567 {
+        content: attr(data-label);
+        color: #aaa;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+
+  @include screen-max-width-567 {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  &.pending {
+    background: #facc15;
+    color: #000;
+  }
+
+  &.approved {
+    background: #22c55e;
+    color: #000;
+  }
+
+  &.rejected {
+    background: #ef4444;
+    color: #fff;
+  }
+}

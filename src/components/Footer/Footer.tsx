@@ -1,0 +1,70 @@
+"use client";
+import { useTranslation } from "react-i18next";
+
+export default function Footer() {
+    const { t } = useTranslation();
+
+    return (
+        <footer>
+            <div className="footer-content">
+                {/* TOP WARNING */}
+                <div className="footer-content-top">
+                    <div className="footer-content-top-content">
+                        <span>21+</span>
+                        <h3>{t("footer.age_warning")}</h3>
+                    </div>
+                </div>
+
+                {/* LISTS */}
+                <div className="footer-content-item">
+
+                    {/* CASINO */}
+                    <div className="footer-lists">
+                        <h4>{t("footer.casino")}</h4>
+                        <ul>
+                            <li><a href={"#"}>{t("footer.slots")}</a></li>
+                            <li><a href={"#"}>{t("footer.promos")}</a></li>
+                            <li><a href={"#"}>{t("footer.affiliate")}</a></li>
+                            <li><a href={"#"}>{t("footer.bonuses")}</a></li>
+                        </ul>
+                    </div>
+
+                    {/* EVIDA */}
+                    <div className="footer-lists">
+                        <h4>{t("footer.evida")}</h4>
+                        <ul>
+                            <li><a href={"#"}>{t("footer.license")}</a></li>
+                            <li><a href={"#"}>{t("footer.privacy")}</a></li>
+                            <li><a href={"#"}>{t("footer.about_us")}</a></li>
+                            <li><a href={"#"}>{t("footer.terms")}</a></li>
+                        </ul>
+                    </div>
+
+                    {/* INFORMATION */}
+                    <div className="footer-lists">
+                        <h4>{t("footer.info")}</h4>
+                        <ul>
+                            <li><a href={"#"}>{t("footer.contact")}</a></li>
+                            <li><a href={"#"}>{t("footer.notifications")}</a></li>
+                        </ul>
+                    </div>
+
+                    {/* LIVE CASINO */}
+                    <div className="footer-lists">
+                        <h4>{t("footer.live_casino")}</h4>
+                        <ul>
+                            <li><a href={"#"}>{t("footer.blackjack")}</a></li>
+                            <li><a href={"#"}>{t("footer.roulette")}</a></li>
+                            <li><a href={"#"}>{t("footer.poker")}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* COPYRIGHT */}
+                <div className="footer-content-bottom">
+                    <p>{t("footer.rights")}</p>
+                </div>
+            </div>
+        </footer>
+    );
+}

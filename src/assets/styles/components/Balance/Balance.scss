@@ -1,0 +1,391 @@
+@use '../../mixin' as *;
+
+.balance-info {
+  margin: 40px;
+  @include screen-max-width-991 {
+    margin: 20px;
+  }
+
+  .users-welcome {
+    display: flex;
+    color: white;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #18133b;
+    border-radius: 20px;
+    padding: 20px;
+
+    a {
+      width: 150px;
+      border-radius: 50%;
+      @include screen-max-width-767 {
+        width: 100px;
+      }
+
+      img {
+        border-radius: 20px;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      text-align: left;
+    }
+  }
+
+  .wallet-info {
+    background-color: #18133b;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 0;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 22px;
+      @include screen-max-width-567 {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      li {
+        color: grey;
+
+        p {
+          color: white;
+          margin: 8px 0;
+        }
+      }
+    }
+  }
+
+  .balance-info-item {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include screen-max-width-1200 {
+      width: 20%;
+    }
+    @include screen-max-width-767 {
+      width: 0;
+    }
+
+    .all-infos {
+      background-color: #18133b;
+      padding: 20px;
+      border-radius: 20px;
+      color: white;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        @include screen-max-width-767 {
+          justify-content: center;
+          align-items: center;
+        }
+
+        li {
+          background-color: #0d0b25;
+          padding: 20px;
+          border-radius: 20px;
+          @include screen-max-width-991 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          button {
+            display: flex;
+            background-color: transparent;
+            gap: 20px;
+            color: white;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+
+            i {
+              font-size: 35px;
+              background-color: white;
+              @include screen-max-width-767 {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .balance-info-item-history {
+    width: 59%;
+    background-color: #18133b;
+    border-radius: 20px;
+    padding: 20px;
+    @include screen-max-width-1200 {
+      width: 80%;
+    }
+    @include screen-max-width-767 {
+      width: 100%;
+    }
+
+    .cards-info {
+      width: 100%;
+
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        max-width: 100%;
+        width: 100%;
+        @include screen-max-width-991 {
+          flex-direction: column;
+        }
+
+        li {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: calc(20% - 15px);
+          background-color: black;
+          @include screen-max-width-991 {
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+          }
+
+          .cards-btn {
+            max-width: 130px;
+            max-height: 130px;
+            min-height: 110px;
+            padding: 15px;
+            border: none;
+            background-color: transparent;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            @include screen-max-width-991 {
+              flex-direction: row;
+              justify-content: space-between;
+              width: 100%;
+              max-width: unset;
+              min-width: unset;
+              min-height: unset;
+            }
+
+            .users-cards {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-direction: column;
+              gap: 10px;
+              @include screen-max-width-991 {
+                display: flex;
+                flex-direction: row;
+              }
+
+              .users-cards-img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 94px;
+                height: 40px;
+              }
+
+              @include screen-max-width-991 {
+                flex-direction: row;
+              }
+
+              p {
+                color: white;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .withdraw {
+      margin: 50px 0;
+      h3 {
+        color: white;
+        font-size: 25px;
+      }
+      .cards {
+        margin: 20px 0;
+        .card {
+          color: white;
+        }
+      }
+      .btn-withdraw {
+        display: flex;
+        gap: 5px;
+        button {
+          cursor: pointer;
+          padding: 10px 30px;
+          border-radius: 10px;
+          background-color: #18133b;
+          color: white;
+        }
+      }
+      select {
+        width: 300px;
+        height: 50px;
+        font-size: 18px;
+        margin: 20px 0 0 0;
+        background-color: #18133b;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid #211a4f;
+      }
+    }
+  }
+
+  .btn {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    @include screen-max-width-767 {
+      flex-direction: column;
+    }
+
+    button {
+      background-color: #d2c81b;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 30px;
+      color: white;
+      cursor: pointer;
+      font-size: 22px;
+    }
+  }
+
+  .deposit-wallet {
+    background-color: #18133b;
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 20px;
+    @include screen-max-width-767 {
+      border-radius: 0;
+      margin: 0;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .more-info-card {
+      .btn-more-info {
+        padding: 10px 30px;
+        background-color: #18133b;
+        color: white;
+        cursor: pointer;
+        margin: 20px 0;
+      }
+
+      .more-info {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        line-height: 22px;
+      }
+    }
+
+    label {
+      input {
+        background-color: #0d0b25;
+        border: none;
+        color: white;
+        padding: 25px;
+        &::placeholder {
+          color: grey;
+        }
+
+      }
+      .no-spinner::-webkit-outer-spin-button,
+      .no-spinner::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      select {
+        width: 100%;
+        height: 60px;
+        background-color: #0d0b25;
+        color: white;
+        border: none;
+        padding: 20px;
+        border-radius: 10px;
+      }
+    }
+
+    h3 {
+      color: white;
+
+    }
+
+    h4 {
+      color: white;
+      margin: 40px 0;
+    }
+  }
+
+  .my-balance {
+    margin: 40px 0;
+    background-color: #0d0b25;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+
+    p {
+      margin: 20px 0;
+      font-size: 25px;
+      color: #bbb7b7;
+      @include screen-max-width-767 {
+        font-size: 18px;
+      }
+    }
+
+    span {
+      font-size: 35px;
+      color: white;
+      @include screen-max-width-767 {
+        font-size: 16px;
+      }
+    }
+
+    .my-balance-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 30px 0;
+
+      button {
+        background-color: transparent;
+        border: none;
+
+        i {
+          font-size: 35px;
+          background-color: white;
+        }
+      }
+
+      h4 {
+        font-size: 35px;
+        @include screen-max-width-767 {
+          font-size: 25px;
+        }
+        @include screen-max-width-567 {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+}

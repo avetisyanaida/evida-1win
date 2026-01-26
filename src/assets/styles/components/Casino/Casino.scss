@@ -1,0 +1,141 @@
+@use '../../mixin' as *;
+
+.slots-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  .casino-card {
+    width: calc(20% - 16px);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    @include screen-max-width-1400 {
+      width: calc(25% - 15px);
+    }
+    @include screen-max-width-991 {
+      width: calc(33.33% - 13.33px);
+    }
+    &:hover .buttons{
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0.4s ease;
+    }
+    .buttons {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      backdrop-filter: blur(16px);
+      inset: 0;
+      h3 {
+        font-size: 15px;
+        color: white;
+      }
+      p {
+        color: green;
+        font-size: 16px;
+      }
+      .gaming {
+        padding: 8px 20px;
+        background-color: #d2c81b;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        &:hover {
+          background-color: #e1d763;
+        }
+      }
+      .demo {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        &:hover {
+          color: #beb41d;
+          transition: all .3s;
+        }
+      }
+    }
+  }
+  .modal-component {
+    .modal-content {
+      max-width: 350px;
+      backdrop-filter: blur(80px);
+      background-color: #0000003b;
+      .game-modal-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: 70%;
+        }
+        p {
+          text-align: center;
+          color: white;
+        }
+        .buttons {
+          button {
+            padding: 10px 20px;
+            background-color: #d2c81b;
+            color: white;
+            border-radius: 10px;
+            border: none;
+          }
+          .gaming {
+            color: black;
+            font-weight: bold;
+          }
+          .demo {
+            background-color: #211a4f;
+            color: white;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+.payoutlines {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.casino-game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  .casino-game-item {
+    position: relative;
+    button {
+      position: absolute;
+      top: -30;
+      right: 0;
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  }
+}

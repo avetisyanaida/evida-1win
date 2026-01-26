@@ -1,0 +1,68 @@
+@use '../../mixin' as *;
+.nav-wrap-bottom {
+  width: 100%;
+  padding: 20px 0;
+  position: fixed;
+  bottom: 10px;
+  nav {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      li {
+        width: calc(20% - 16px);
+        .wallet-btn {
+          background-color: #37F168FF;
+          padding: 20px;
+          cursor: pointer;
+          border-radius: 20px;
+        }
+        button {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+          border: none;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+          @include screen-max-width-767 {
+            font-size: 13px;
+          }
+          @include screen-max-width-567 {
+            font-size: 12px;
+          }
+          i {
+            background-color: white;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+  .tabs-list {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      li {
+        background-color: #211a4f;
+        padding: 15px;
+        width: calc(33.33% - 20px);
+        border-radius: 10px;
+        a {
+          color: white;
+        }
+        @include screen-max-width-567 {
+          width: calc(50% - 10px);
+        }
+      }
+    }
+  }
+}

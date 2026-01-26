@@ -1,0 +1,27 @@
+@use 'mixin';
+@use'variables';
+@use 'global';
+
+//components
+@use 'components/Main/Main';
+@use 'components/Header/Header';
+@use 'components/ModalComponent/ModalComponent';
+@use 'components/Login/Login';
+@use 'components/SignUp/SignUp';
+@use 'components/Profile/Profile';
+@use 'components/Balance/Balance';
+@use 'components/Header/HeaderMenu';
+@use 'components/SliderSection/SliderSection';
+@use 'components/Casino/Casino';
+@use 'components/TabsComponent/TabsComponent';
+@use 'components/PersonalDetails/PersonalDetails';
+@use 'components/AttachCard/AttachCard';
+@use 'components/Verification/Verification';
+@use 'components/Limites/LimitAccount';
+@use 'components/SwitcherComponent/Switcher';
+@use 'components/NavWrap/NavWrap';
+@use 'components/Footer/Footer';
+
+@use 'components/deposit-saved-card/deposit-saved-card';
+@use 'components/withdrawAdmin/withdrawAdmin';
+@use 'components/TransactionHistory/TransactionHistory';
