@@ -9,6 +9,8 @@ import type { ReactNode } from "react";
 import RootClient from "@/src/components/RootClient/RootClient";
 import {UserProvider} from "@/src/context/UserContext";
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="en">
