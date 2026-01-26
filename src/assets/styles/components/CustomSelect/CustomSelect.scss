@@ -59,3 +59,15 @@
     }
   }
 }
+.custom-select-limits {
+  position: relative;
+  width: 100%;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    li {
+      background-color: #5244a6;
+    }
+  }
+}

@@ -6,9 +6,24 @@
   padding: 0;
   box-sizing: border-box;
 }
+.app-body {
+  max-width: 1920px;
+  width: 100%;
+}
 body {
   background-color: $darkBlue;
   font-family: sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+input {
+  font-size: 16px;
+}
+textarea {
+  font-size: 16px;
+}
+select {
+  font-size: 16px;
 }
 
 ul li {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import {useState, useRef, useEffect} from "react";
 
 interface Option {
     value: string;
@@ -13,6 +13,7 @@ interface CustomSelectProps {
     options: Option[];
     onChange: (name: string, value: string) => void;
     placeholder?: string;
+    className?: string;
 }
 
 export const CustomSelect = ({
@@ -21,6 +22,7 @@ export const CustomSelect = ({
                                  options,
                                  onChange,
                                  placeholder,
+                                 className
                              }: CustomSelectProps) => {
     const [open, setOpen] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -38,13 +40,13 @@ export const CustomSelect = ({
     }, []);
 
     return (
-        <div className="custom-select" ref={ref}>
+        <div className={`custom-select ${className ?? ""}`} ref={ref}>
             <div
                 className="custom-select__value"
                 onClick={() => setOpen(prev => !prev)}
             >
                 {selected ? selected.label : placeholder}
-                <span className={`arrow ${open ? "open" : ""}`} />
+                <span className={`arrow ${open ? "open" : ""}`}/>
             </div>
 
             {open && (

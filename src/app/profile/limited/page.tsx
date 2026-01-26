@@ -6,6 +6,7 @@ import { supabase } from "@/src/hooks/supabaseClient";
 import { toast } from "react-toastify";
 import Profile from "@/src/app/profile/page";
 import { useEffect, useState } from "react";
+import {CustomSelect} from "@/src/components/ui/CustomSelect";
 
 interface PasswordModalProps {
     password: string;
@@ -165,16 +166,21 @@ export default function LimitAccount() {
                         <h3>🕒 {t("limit_set_title")}</h3>
                         <p>{t("limit_set_description")}</p>
 
-                        <select
-                            value={selectedDuration ?? ""}
-                            onChange={(e) => setSelectedDuration(e.target.value ? Number(e.target.value) : null)}
-                            style={{ padding: '8px', marginBottom: '10px', width: '100%' }}
-                        >
-                            <option value="">{t("limit_select_duration")}</option>
-                            <option value={24 * 60}>{t("limit_24h")}</option>
-                            <option value={7 * 24 * 60}>{t("limit_1week")}</option>
-                            <option value={30 * 24 * 60}>{t("limit_1month")}</option>
-                        </select>
+                        <CustomSelect
+                            className={'custom-select-limits'}
+                            name="limitDuration"
+                            value={selectedDuration ? String(selectedDuration) : ""}
+                            placeholder={t("limit_select_duration")}
+                            options={[
+                                { value: String(24 * 60), label: t("limit_24h") },
+                                { value: String(7 * 24 * 60), label: t("limit_1week") },
+                                { value: String(30 * 24 * 60), label: t("limit_1month") },
+                            ]}
+                            onChange={(_, value) => {
+                                setSelectedDuration(value ? Number(value) : null);
+                            }}
+                        />
+
 
                         <button
                             type="button"
