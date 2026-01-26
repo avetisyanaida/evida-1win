@@ -7,6 +7,8 @@ export const noLimitCityGames: CasinoGame [] = [
         title: 'Book Of Shadows',
         description: 'NoLimit City',
         provider: 'noLimitCity',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 2,
@@ -14,6 +16,8 @@ export const noLimitCityGames: CasinoGame [] = [
         title: 'Golden Genie & the Walking Wilds',
         description: 'NoLimit City',
         provider: 'noLimitCity',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 3,
@@ -21,6 +25,8 @@ export const noLimitCityGames: CasinoGame [] = [
         title: 'Deadwood xNudge',
         description: 'NoLimit City',
         provider: 'noLimitCity',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 4,
@@ -28,6 +34,8 @@ export const noLimitCityGames: CasinoGame [] = [
         title: 'Punk Rocker',
         description: 'NoLimit City',
         provider: 'noLimitCity',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 5,
@@ -35,6 +43,8 @@ export const noLimitCityGames: CasinoGame [] = [
         title: 'Dragon Tribe',
         description: 'NoLimit City',
         provider: 'noLimitCity',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 6,
@@ -42,5 +52,7 @@ export const noLimitCityGames: CasinoGame [] = [
         title: 'Manhattan Goes Wild',
         description: 'NoLimit City',
         provider: 'noLimitCity',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
 ]

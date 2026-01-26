@@ -6,4 +6,5 @@ export interface CasinoGame {
     provider: string;
     popularity?: number;
     isNew?: boolean;
+    demoUrl?: string; // 👈 սա
 }

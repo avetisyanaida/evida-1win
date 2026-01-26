@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import type { CasinoGame } from "@/src/types/casino";
 import { ModalComponent } from "@/src/components/ModalComponent/ModalComponent";
+import Image from "next/image";
+import {useRouter} from "next/navigation";
 
 // Ձեր Supabase public bucket URL
 const SUPABASE_PUBLIC_URL = "https://yxqgxsxseunohktzuxbm.supabase.co/storage/v1/object/public/casino-assets";
@@ -12,6 +14,9 @@ const IMAGE_EXTS = [".webp", ".jpg", ".png"];
 export const GameCard = ({ game }: { game: CasinoGame }) => {
     // Base path in Supabase
     const basePath = `${SUPABASE_PUBLIC_URL}/${game.imageUrl.replace(/\.(webp|jpg|png)$/i, "")}`;
+    const iframeWrapperRef = useRef<HTMLDivElement>(null);
+
+    const [isDemoOpen, setIsDemoOpen] = useState(false);
 
     const [variantIndex, setVariantIndex] = useState(0);
     const [src, setSrc] = useState(basePath + IMAGE_EXTS[0]);
@@ -38,14 +43,26 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
         }
     };
 
+    const handleFullscreen = () => {
+        if (!iframeWrapperRef.current) return;
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            iframeWrapperRef.current.requestFullscreen();
+        }
+    };
+
+
     const handleCardClick = () => isMobile && setIsModalOpen(true);
     const handlePlay = () => console.log("PLAY:", game.title);
-    const handleDemo = () => console.log("DEMO:", game.title);
+    const handleDemo = () => setIsDemoOpen(true);
+
 
     return (
         <>
             <div className="casino-card" onClick={handleCardClick}>
-                <img
+                <Image
                     src={src}
                     alt={game.title}
                     width={300}
@@ -67,7 +84,7 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
             {isMobile && isModalOpen && (
                 <ModalComponent title={game.title} onClose={() => setIsModalOpen(false)}>
                     <div className="game-modal-body">
-                        <img src={src} alt={game.title} width={300} height={200} onError={handleError} />
+                        <Image src={src} alt={game.title} width={300} height={200} onError={handleError} />
                         {game.description && <p style={{ marginTop: 12 }}>{game.description}</p>}
                         <div className="buttons" style={{ marginTop: 16, display: "flex", justifyContent: "center", gap: 10 }}>
                             <button className="gaming" onClick={handlePlay}>Խաղալ</button>
@@ -76,6 +93,55 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
                     </div>
                 </ModalComponent>
             )}
+
+            {isDemoOpen && (
+                <ModalComponent
+                    title={`${game.title}`}
+                    onClose={() => setIsDemoOpen(false)}
+                >
+                    <div
+                        ref={iframeWrapperRef}
+                        style={{
+                            width: "100%",
+                            height: "70vh",
+                            position: "relative",
+                            background: "#000",
+                        }}
+                    >
+                        {/* FULLSCREEN BUTTON */}
+                        <button
+                            onClick={handleFullscreen}
+                            style={{
+                                position: "absolute",
+                                top: 10,
+                                right: 10,
+                                zIndex: 10,
+                                padding: "6px 10px",
+                                background: "rgba(0,0,0,0.6)",
+                                color: "#fff",
+                                border: "1px solid rgba(255,255,255,0.3)",
+                                borderRadius: 6,
+                                cursor: "pointer",
+                            }}
+                        >
+                            ⛶
+                        </button>
+
+                        <iframe
+                            src={game.demoUrl}
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                border: "none",
+                            }}
+                            allow="autoplay; fullscreen"
+                            allowFullScreen
+                        />
+                    </div>
+                </ModalComponent>
+            )}
+
+
         </>
     );
 };

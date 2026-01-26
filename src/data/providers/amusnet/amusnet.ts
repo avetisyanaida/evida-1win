@@ -7,6 +7,8 @@ export const amusnetGames: CasinoGame[] = [
         title: "Shining Crown",
         description: "Amusnet",
         provider: 'Amusnet',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate",
     },
     {
         id: 2,
@@ -14,6 +16,8 @@ export const amusnetGames: CasinoGame[] = [
         title: "40 Extra Crown",
         description: "Amusnet",
         provider: 'Amusnet',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 3,
@@ -21,6 +25,8 @@ export const amusnetGames: CasinoGame[] = [
         title: "Hot Deco EDAONE",
         description: "Amusnet",
         provider: 'Amusnet',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate",
     },
     {
         id: 4,
@@ -28,6 +34,8 @@ export const amusnetGames: CasinoGame[] = [
         title: "40 Super Hot",
         description: "Amusnet",
         provider: 'Amusnet',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate",
     },
     {
         id: 5,
@@ -35,6 +43,8 @@ export const amusnetGames: CasinoGame[] = [
         title: "Fruits & Gold",
         description: "Amusnet",
         provider: 'Amusnet',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate",
     },
     {
         id: 6,
@@ -42,6 +52,8 @@ export const amusnetGames: CasinoGame[] = [
         title: "Shining Crown",
         description: "Amusnet",
         provider: 'Amusnet',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20olympgate",
     },
 ];
 

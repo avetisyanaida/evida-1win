@@ -7,6 +7,8 @@ export const amusnetEgyptQuestGames: CasinoGame[] = [
         title: "Rise of Ra",
         description: "Amusnet Egypt Quest",
         provider: 'amusnetEgyptQuest',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 2,
@@ -14,6 +16,8 @@ export const amusnetEgyptQuestGames: CasinoGame[] = [
         title: "Egypt Sky",
         description: "Amusnet Egypt Quest",
         provider: 'amusnetEgyptQuest',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
 
     },
     {
@@ -22,6 +26,8 @@ export const amusnetEgyptQuestGames: CasinoGame[] = [
         title: "20 Burning Hot",
         description: "Amusnet Egypt Quest",
         provider: 'amusnetEgyptQuest',
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
 
     },
     {
@@ -30,7 +36,8 @@ export const amusnetEgyptQuestGames: CasinoGame[] = [
         title: "Halloween",
         description: "Amusnet Egypt Quest",
         provider: 'amusnetEgyptQuest',
-
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 5,
@@ -38,7 +45,8 @@ export const amusnetEgyptQuestGames: CasinoGame[] = [
         title: "Circus Brilliant",
         description: "Amusnet Egypt Quest",
         provider: 'amusnetEgyptQuest',
-
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
     {
         id: 6,
@@ -46,6 +54,7 @@ export const amusnetEgyptQuestGames: CasinoGame[] = [
         title: "20 Super Hot",
         description: "Amusnet Egypt Quest",
         provider: 'amusnetEgyptQuest',
-
+        demoUrl:
+            "https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs20fruitsw",
     },
 ];
