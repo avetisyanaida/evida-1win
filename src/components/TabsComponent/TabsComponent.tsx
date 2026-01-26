@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useTranslation } from "react-i18next";
 import { useCasino } from "@/src/components/CasinoContext/CasinoContext";
 import useBreakpoints from "@/src/hooks/useBreackPoints";
@@ -20,6 +20,13 @@ export const TabsComponent = () => {
 
     const [showAllProviders, setShowAllProviders] = useState(false);
     const { isDesktop } = useBreakpoints();
+
+    useEffect(() => {
+        if (!urlProvider) {
+            setShowProviders(true);
+        }
+    }, [urlProvider, setShowProviders]);
+
 
     const handleClickProvider = (prov: string) => {
         router.push(`?provider=${prov}`, { scroll: false });
