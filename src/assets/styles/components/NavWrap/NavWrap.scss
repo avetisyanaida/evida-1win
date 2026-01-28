@@ -23,6 +23,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        .wallet-btn {
+          box-shadow: 0 0 0 0;
+        }
       }
       li {
         width: calc(20% - 16px);

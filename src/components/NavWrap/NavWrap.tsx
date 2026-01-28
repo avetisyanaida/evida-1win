@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import {ModalComponent} from "../ModalComponent/ModalComponent";
 import {useCasino} from "../CasinoContext/CasinoContext";
 import {useRouter} from "next/navigation";
+import Image from "next/image";
 
 
 export const NavWrap = () => {
@@ -41,9 +42,9 @@ export const NavWrap = () => {
                             </button>
                         </li>
                         <li className={'deposit-li'}>
-                            <span className={'wallet-btn'} onClick={() => router.push('/profile/wallet')}>
-                                <img src="/deposit.svg" alt="wallet icon" />
-                            </span>
+                            <button className={'wallet-btn'} onClick={() => router.push('/profile/wallet')}>
+                                <Image src="/deposit.svg" alt="wallet icon" width={100} height={100} />
+                            </button>
                             <button className={'deposit-text'}>Լիցքավորում</button>
                         </li>
                         <li>
