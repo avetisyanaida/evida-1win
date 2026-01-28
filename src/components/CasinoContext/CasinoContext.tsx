@@ -36,6 +36,13 @@ interface CasinoContextType {
 
     showHistory: boolean;
     setShowHistory: React.Dispatch<React.SetStateAction<boolean>>;
+
+    showLogin: boolean;
+    setShowLogin: React.Dispatch<React.SetStateAction<boolean>>;
+
+    showSignup: boolean;
+    setShowSignup: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
 
@@ -53,6 +60,10 @@ export const CasinoProvider = ({ children }: { children: ReactNode }) => {
     const [showMoreInfo, setShowMoreInfo] = useState(false);
     const [showWithdraw, setShowWithdraw] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
+
+
 
     return (
         <CasinoContext.Provider
@@ -79,6 +90,10 @@ export const CasinoProvider = ({ children }: { children: ReactNode }) => {
                 setShowWithdraw,
                 showHistory,
                 setShowHistory,
+                showLogin,
+                setShowLogin,
+                showSignup,
+                setShowSignup,
             }}
         >
             {children}

@@ -71,7 +71,7 @@ export default function RootClient({ children }: { children: React.ReactNode }) 
                     <SliderSection />
                     <ProvidersStrip/>
                     <TabsComponent />
-                    <NavWrap />
+                    <NavWrap onLoginClick={() => setIsOpenLogin(true)} />
                     <Footer />
 
                     {isLimited && currentLimit && (
