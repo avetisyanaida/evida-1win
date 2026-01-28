@@ -17,14 +17,40 @@ export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState("");
 
+    const [isRecovery, setIsRecovery] = useState<boolean | null>(null);
+
+    /* ----------------------------------
+       1️⃣ CHECK — սա իսկապե՞ս recovery link է
+    ---------------------------------- */
     useEffect(() => {
+        const hash = window.location.hash;
+
+        if (!hash) {
+            setIsRecovery(false);
+            return;
+        }
+
+        const params = new URLSearchParams(hash.substring(1));
+        const type = params.get("type");
+
+        if (type === "recovery") {
+            setIsRecovery(true);
+        } else {
+            setIsRecovery(false);
+        }
+    }, []);
+
+    /* ----------------------------------
+       2️⃣ APPLY RECOVERY SESSION
+    ---------------------------------- */
+    useEffect(() => {
+        if (isRecovery !== true) return;
+
         const applyRecoverySession = async () => {
             const hash = window.location.hash;
-
             if (!hash.includes("access_token")) return;
 
             const params = new URLSearchParams(hash.substring(1));
-
             const access_token = params.get("access_token");
             const refresh_token = params.get("refresh_token");
 
@@ -37,14 +63,29 @@ export default function ResetPassword() {
 
             if (error) {
                 console.error("SET SESSION ERROR:", error);
+                setMsg(t("reset.error"));
             }
         };
 
         void applyRecoverySession();
-    }, []);
+    }, [isRecovery, t]);
 
+    /* ----------------------------------
+       ❌ NOT A RECOVERY LINK → EXIT
+    ---------------------------------- */
+    useEffect(() => {
+        if (isRecovery === false) {
+            router.replace("/");
+        }
+    }, [isRecovery, router]);
 
+    if (isRecovery === null) {
+        return null; // կամ loader
+    }
 
+    /* ----------------------------------
+       3️⃣ UPDATE PASSWORD
+    ---------------------------------- */
     const handleUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -79,11 +120,14 @@ export default function ResetPassword() {
         setMsg(t("reset.success"));
 
         setTimeout(async () => {
-            await supabase.auth.signOut();
+            await supabase.auth.signOut(); // մաքրում ենք recovery session-ը
             router.push("/admin");
         }, 1200);
     };
 
+    /* ----------------------------------
+       UI
+    ---------------------------------- */
     return (
         <div
             style={{
@@ -115,7 +159,6 @@ export default function ResetPassword() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "15px",
-                    position: "relative",
                 }}
             >
                 <div style={{ position: "relative" }}>
