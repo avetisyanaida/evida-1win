@@ -262,9 +262,9 @@ export const Header = ({
                                     onWithdraw={onWithdraw}
                                     onHistory={handleHistory}
                                 />
-                                <LangSwitcher />
                             </>
                         )}
+                        <LangSwitcher/>
                     </ul>
                 )}
 
