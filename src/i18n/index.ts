@@ -20,9 +20,9 @@ if (!i18next.isInitialized) {
             resources,
             lng:
                 typeof window !== "undefined"
-                    ? localStorage.getItem("lang") || "hy"
-                    : "hy",
-            fallbackLng: "hy",
+                    ? localStorage.getItem("lang") || "ru"
+                    : "ru",
+            fallbackLng: "ru",
             interpolation: { escapeValue: false },
         })
         .catch((err) => console.error("i18n init error:", err));

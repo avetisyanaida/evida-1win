@@ -3,6 +3,7 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
+import Image from "next/image";
 
 export const SliderSection = () => {
     const settings = {
@@ -13,6 +14,7 @@ export const SliderSection = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
+        adaptiveHeight: false,
     };
 
     const slides = [
@@ -26,12 +28,15 @@ export const SliderSection = () => {
             <Slider {...settings} className="slider">
                 {slides.map(slide => (
                     <div key={slide.id} className="slide">
-                        <img
+                        <Image
                             src={slide.image}
                             alt={slide.title}
                             loading="lazy"
+                            priority={slide.id === 1}
+                            style={{ objectFit: "cover" }}
+                            width={1200}
+                            height={500}
                         />
-                        {/* <h3>{slide.title}</h3> */}
                     </div>
                 ))}
             </Slider>
