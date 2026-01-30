@@ -74,6 +74,9 @@
       max-width: 600px;
       backdrop-filter: blur(80px);
       background-color: #0000003b;
+      @include screen-max-width-767 {
+        backdrop-filter: blur(20px);
+      }
       .game-modal-body {
         display: flex;
         flex-direction: column;
