@@ -13,21 +13,15 @@ export default function ResetPassword() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState("");
-    const [isReady, setIsReady] = useState(false);
+    const [ready, setReady] = useState(false);
 
-    /* --------------------------------------------
-       1️⃣ Exchange code → session (PKCE REQUIRED)
-    --------------------------------------------- */
+    // 1️⃣ PKCE exchange
     useEffect(() => {
-        const exchangeSession = async () => {
+        const run = async () => {
             const params = new URLSearchParams(window.location.search);
-            const type = params.get("type");
-
-            // ❌ եթե recovery չի → home
-            if (type !== "recovery") {
+            if (params.get("type") !== "recovery") {
                 router.replace("/");
                 return;
             }
@@ -37,37 +31,30 @@ export default function ResetPassword() {
             );
 
             if (error) {
-                console.error("PKCE EXCHANGE ERROR:", error);
                 setMsg(t("reset.error"));
                 return;
             }
 
-            setIsReady(true);
+            setReady(true);
         };
 
-        exchangeSession();
+        run();
     }, [router, t]);
 
-    if (!isReady) {
-        return null; // կամ loader
-    }
+    if (!ready) return null;
 
-    /* --------------------------------------------
-       2️⃣ Update password
-    --------------------------------------------- */
-    const handleSubmit = async (e: React.FormEvent) => {
+    // 2️⃣ update password
+    const submit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!password || !confirmPassword) {
             setMsg(t("reset.fillFields"));
             return;
         }
-
         if (password !== confirmPassword) {
             setMsg(t("reset.notMatch"));
             return;
         }
-
         if (password.length < 6) {
             setMsg(t("reset.minLength"));
             return;
@@ -76,14 +63,10 @@ export default function ResetPassword() {
         setLoading(true);
         setMsg("");
 
-        const { error } = await supabase.auth.updateUser({
-            password,
-        });
-
+        const { error } = await supabase.auth.updateUser({ password });
         setLoading(false);
 
         if (error) {
-            console.error("UPDATE PASSWORD ERROR:", error);
             setMsg(t("reset.error"));
             return;
         }
@@ -100,53 +83,30 @@ export default function ResetPassword() {
         <div className="reset-password-wrapper">
             <h2>{t("reset.title")}</h2>
 
-            {msg && (
-                <p
-                    style={{
-                        marginBottom: 20,
-                        color: msg.includes("success") ? "#4ade80" : "#ff4d4d",
-                    }}
-                >
-                    {msg}
-                </p>
-            )}
+            {msg && <p>{msg}</p>}
 
-            <form onSubmit={handleSubmit}>
-                <div className="form-wrapper">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder={t("reset.newPassword")}
-                        autoComplete="new-password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <i
-                        className={showPassword ? "icon eye-open" : "icon eye-close"}
-                        onClick={() => setShowPassword((v) => !v)}
-                    />
-                </div>
+            <form onSubmit={submit}>
+                <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder={t("reset.newPassword")}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="button" onClick={() => setShowPassword(v => !v)}>
+                    👁
+                </button>
 
-                <div className="form-wrapper">
-                    <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder={t("reset.confirmPassword")}
-                        autoComplete="new-password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                    <i
-                        className={
-                            showConfirmPassword ? "icon eye-open" : "icon eye-close"
-                        }
-                        onClick={() => setShowConfirmPassword((v) => !v)}
-                    />
-                </div>
+                <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder={t("reset.confirmPassword")}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button type="button" onClick={() => setShowConfirmPassword(v => !v)}>
+                    👁
+                </button>
 
-                <button
-                    className="form-wrapper-button"
-                    type="submit"
-                    disabled={loading}
-                >
+                <button disabled={loading}>
                     {loading ? t("reset.saving") : t("reset.confirm")}
                 </button>
             </form>
