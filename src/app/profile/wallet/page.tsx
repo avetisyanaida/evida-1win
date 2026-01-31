@@ -45,10 +45,8 @@ export default function Balance() {
         showCardInfo,
     } = useCasino();
 
-    // 🔥 ՄԻԱԿ balance source
     const {balance, fetchBalance} = useBalance();
 
-    // 🔥 realtime balance
     useBalanceRealtime(userId, fetchBalance);
 
     const generateAndSaveUniqueId = useCallback(
@@ -96,9 +94,8 @@ export default function Balance() {
             const uid = sessionData?.session?.user?.id;
             if (!uid) return;
 
-            setUserId(uid); // 🔥 սա առաջինը
+            setUserId(uid);
 
-            // ⏳ մի փոքր սպասում, որ realtime-ը attach լինի
             await new Promise(r => setTimeout(r, 0));
 
             await fetchBalance();

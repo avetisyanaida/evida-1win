@@ -17,7 +17,6 @@ export default function PersonalDetails() {
     const [savedUsername, setSavedUsername] = useState<string | null>(null);
 
 
-    // 🔥 username status
     const [usernameStatus, setUsernameStatus] = useState<
         "idle" | "checking" | "taken" | "free"
     >("idle");
@@ -106,7 +105,6 @@ export default function PersonalDetails() {
     };
 
     const handleSave = async () => {
-        // ❌ եթե username-ը զբաղված ա
         if (usernameStatus === "taken") {
             alert(t("usernameTaken"));
             return;
@@ -165,7 +163,6 @@ export default function PersonalDetails() {
     return (
         <>
             <Profile />
-
             <section>
                 <div className="container">
                     <div className="personal-details">
@@ -252,17 +249,6 @@ export default function PersonalDetails() {
                     </div>
                 </div>
             </section>
-
-            <style jsx>{`
-                .success-message {
-                    margin-bottom: 12px;
-                    padding: 10px;
-                    background: #e6fffa;
-                    color: #065f46;
-                    border: 1px solid #34d399;
-                    border-radius: 6px;
-                }
-            `}</style>
         </>
     );
 }

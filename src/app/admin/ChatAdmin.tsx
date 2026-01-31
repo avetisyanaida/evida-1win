@@ -17,7 +17,6 @@ export default function ChatAdmin() {
     const [reply, setReply] = useState<Record<string, string>>({});
     const [loading, setLoading] = useState(false);
 
-    // LOAD MESSAGES
     const loadMessages = async () => {
         setLoading(true);
         const { data } = await supabase
@@ -33,14 +32,12 @@ export default function ChatAdmin() {
         loadMessages();
     }, []);
 
-    // GROUP BY USER
     const grouped = messages.reduce((acc: Record<string, Message[]>, msg) => {
         if (!acc[msg.user_id]) acc[msg.user_id] = [];
         acc[msg.user_id].push(msg);
         return acc;
     }, {});
 
-    // SEND MESSAGE
     const sendMessage = async (uid: string, email: string) => {
         const text = reply[uid]?.trim();
         if (!text) return;
@@ -55,16 +52,15 @@ export default function ChatAdmin() {
         ]);
 
         setReply((prev) => ({ ...prev, [uid]: "" }));
-        loadMessages();
+        loadMessages().then(r => r);
     };
 
-    // CLOSE CHAT
     const closeChat = async (uid: string) => {
         const ok = confirm("Փակե՞լ այս զրույցը։");
         if (!ok) return;
 
         await supabase.from("messages").delete().eq("user_id", uid);
-        loadMessages();
+        loadMessages().then(r => r);
     };
 
     if (loading) return <p style={{ color: "#aaa" }}>Բեռնվում է...</p>;
@@ -78,10 +74,9 @@ export default function ChatAdmin() {
                     const email = msgs[0]?.email || "unknown";
 
                     return (
-                        <div key={uid} style={chatBox}>
+                        <div key={uid} className={'chatbox'}>
                             <h4>👤 {email !== "guest" ? email : `guest (${uid.slice(0, 6)})`}</h4>
-
-                            <div style={chatArea}>
+                            <div className={'chatArea'}>
                                 {msgs.map((m) => (
                                     <div
                                         key={m.id}
@@ -104,7 +99,7 @@ export default function ChatAdmin() {
 
                             <div style={{ display: "flex", gap: "8px" }}>
                                 <input
-                                    style={input}
+                                    className="chatInput"
                                     placeholder="Պատասխան..."
                                     value={reply[uid] || ""}
                                     onChange={(e) =>
@@ -114,10 +109,10 @@ export default function ChatAdmin() {
                                         }))
                                     }
                                 />
-                                <button style={btnSend} onClick={() => sendMessage(uid, email)}>
+                                <button className={'btnSend'} onClick={() => sendMessage(uid, email)}>
                                     ✉️
                                 </button>
-                                <button style={btnClose} onClick={() => closeChat(uid)}>
+                                <button className={'btnClose'} onClick={() => closeChat(uid)}>
                                     🔒
                                 </button>
                             </div>
@@ -129,25 +124,6 @@ export default function ChatAdmin() {
     );
 }
 
-// STYLES
-const chatBox = {
-    background: "#111",
-    padding: "12px",
-    borderRadius: "10px",
-    marginBottom: "18px",
-};
-
-const chatArea = {
-    background: "#1b1b1b",
-    padding: "10px",
-    borderRadius: "8px",
-    maxHeight: "230px",
-    overflowY: "auto" as const,
-    marginBottom: "10px",
-    display: "flex",
-    flexDirection: "column" as const,
-};
-
 const bubble = {
     padding: "8px 12px",
     borderRadius: "8px",
@@ -156,29 +132,3 @@ const bubble = {
     color: "#fff",
 };
 
-const input = {
-    flex: 1,
-    background: "#222",
-    border: "1px solid #444",
-    color: "#fff",
-    padding: "8px",
-    borderRadius: "6px",
-};
-
-const btnSend = {
-    background: "#3498db",
-    color: "#fff",
-    padding: "8px 12px",
-    borderRadius: "6px",
-    cursor: "pointer",
-    border: "none",
-};
-
-const btnClose = {
-    background: "#c0392b",
-    color: "#fff",
-    padding: "8px 12px",
-    borderRadius: "6px",
-    cursor: "pointer",
-    border: "none",
-};

@@ -11,7 +11,7 @@ interface Props {
     showCurrentPassword: boolean;
     setShowCurrentPassword: (v: boolean) => void;
     onSubmit: React.FormEventHandler<HTMLFormElement>;
-    successMessage?: string; // ✅ Ահա այստեղ ավելացրեցինք
+    successMessage?: string;
 }
 
 export const PasswordChangeForm = ({
@@ -23,7 +23,7 @@ export const PasswordChangeForm = ({
                                        setShowConfirmPassword,
                                        showCurrentPassword,
                                        setShowCurrentPassword,
-                                       successMessage, // ✅ Ավելացրեցինք prop
+                                       successMessage,
                                    }: Props) => {
     const { t } = useTranslation();
 
@@ -74,17 +74,6 @@ export const PasswordChangeForm = ({
             {successMessage && (
                 <div className="success-message">{successMessage}</div>
             )}
-
-            <style jsx>{`
-                .success-message {
-                    margin-top: 10px;
-                    padding: 8px;
-                    background: #e6fffa;
-                    color: #065f46;
-                    border: 1px solid #34d399;
-                    border-radius: 5px;
-                }
-            `}</style>
         </div>
     );
 };

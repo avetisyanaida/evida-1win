@@ -14,9 +14,6 @@ interface FormsPersonal {
     country: string;
     personalNumber: string;
 }
-
-
-
 interface PersonalInfoFormProps {
     formsPersonal: FormsPersonal;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -165,8 +162,6 @@ export const PersonalInfoForm = ({
                         } as any)
                     }
                 />
-
-
                 <label>
                     <input
                         onChange={handleChange}

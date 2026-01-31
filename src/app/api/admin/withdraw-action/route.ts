@@ -9,7 +9,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ ok: false });
         }
 
-        // 1️⃣ withdraw request
         const { data: withdraw } = await supabaseAdmin
             .from("withdraw_requests")
             .select("*")
@@ -20,7 +19,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ ok: false });
         }
 
-        // 2️⃣ user
         const { data: user } = await supabaseAdmin
             .from("users")
             .select("balance")
@@ -31,7 +29,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ ok: false });
         }
 
-        // 3️⃣ BALANCE ↓↓↓
         if (status === "approved") {
             const newBalance =
                 Number(user.balance) - Number(withdraw.amount);
@@ -46,7 +43,6 @@ export async function POST(req: Request) {
                 .eq("user_id", withdraw.user_id);
         }
 
-        // 4️⃣ withdraw_requests
         await supabaseAdmin
             .from("withdraw_requests")
             .update({
@@ -55,14 +51,13 @@ export async function POST(req: Request) {
             })
             .eq("id", id);
 
-        // 5️⃣ transactions — 🔥 ԱՅՍՆ ԷՐ ԲԱՑԱԿԱ
         await supabaseAdmin
             .from("transactions")
             .update({
                 status,
                 admin_comment: comment ?? null,
             })
-            .eq("reference_id", withdraw.id); // 🔥 ՄԵԿԸ ՄԵԿ ԿԱՊ
+            .eq("reference_id", withdraw.id);
 
 
         return NextResponse.json({ ok: true });

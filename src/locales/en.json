@@ -256,8 +256,10 @@
     "rights": "EVIDA © 2025 All rights reserved."
   },
   "attachCard": {
+    "cardTitle": "My Cards",
     "processing": "Processing...",
     "addCarded": "Add Card",
-    "close": "Close"
+    "close": "Close",
+    "noCard": "No Cards"
   }
 }

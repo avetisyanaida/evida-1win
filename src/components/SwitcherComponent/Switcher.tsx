@@ -5,31 +5,30 @@ import { useTranslation } from "react-i18next";
 
 type Lang = "hy" | "ru" | "en";
 
-const getInitialLang = (): Lang => {
-    if (typeof window === "undefined") return "hy";
-    return (localStorage.getItem("lang") as Lang) || "hy";
-};
-
 export const LangSwitcher = () => {
     const { i18n } = useTranslation();
 
-    const [lang, setLang] = useState<Lang>(getInitialLang);
+    const [lang, setLang] = useState<Lang>("en"); // ✅ միշտ նույնը
     const [open, setOpen] = useState(false);
 
+    // 🔑 localStorage → միայն mount-ից հետո
     useEffect(() => {
-        if (!i18n.isInitialized) return;
-        i18n.changeLanguage(lang).catch(console.error);
-    }, [i18n, lang]);
+        const savedLang = localStorage.getItem("lang") as Lang | null;
+
+        if (savedLang && savedLang !== lang) {
+            setLang(savedLang);
+            i18n.changeLanguage(savedLang).catch(console.error);
+        }
+    }, []);
 
     const changeLang = (selectedLang: Lang) => {
         if (selectedLang === lang) return;
 
         setLang(selectedLang);
-        setOpen(false);
+        i18n.changeLanguage(selectedLang).catch(console.error);
         localStorage.setItem("lang", selectedLang);
+        setOpen(false);
     };
-
-    if (!i18n.isInitialized) return null;
 
     const flagIcon: Record<Lang, string> = {
         hy: "icon armenia",

@@ -16,7 +16,7 @@ interface SavedCard {
     provider: string;
 }
 
-export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) {
+export default function Deposit({onClose, mode}: DepositProps) {
     const [amount, setAmount] = useState("");
     const [text, setText] = useState("");
     const [provider] = useState("idram");
@@ -46,7 +46,7 @@ export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) 
 
             if (data && data.length > 0) {
                 setSavedCards(data);
-                setSelectedCardId(data[0].id); // default՝ առաջին քարտը
+                setSelectedCardId(data[0].id);
             }
         };
 
@@ -74,10 +74,8 @@ export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) 
                 return;
             }
 
-            // 🟦 CARD MODE
             if (mode === "card") {
 
-                // ✅ արդեն կցված քարտ
                 if (selectedCardId) {
                     const res = await fetch("/api/payments/deposit-saved-card", {
                         method: "POST",
@@ -97,7 +95,6 @@ export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) 
                     return;
                 }
 
-                // ➕ ՆՈՐ ՔԱՐՏ
                 const res = await fetch("/api/payments/deposit", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -114,7 +111,6 @@ export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) 
                 return;
             }
 
-            // 🟩 IDRAM / TELCELL (մնում է ինչպես հիմա)
             const res = await fetch("/api/payments/deposit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -167,7 +163,6 @@ export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) 
 
                     {savedCards.length > 0 && (
                         <div className="card-select">
-                            {/* HEADER — միշտ երևում է */}
                             <div
                                 className="card-select-header"
                                 onClick={() => setCardsOpen(!cardsOpen)}
@@ -186,7 +181,6 @@ export default function Deposit({onClose, onBalanceUpdate, mode}: DepositProps) 
                                 </div>
                             </div>
 
-                            {/* DROPDOWN */}
                             {cardsOpen && (
                                 <div className="card-select-body">
                                     {savedCards.map(card => (

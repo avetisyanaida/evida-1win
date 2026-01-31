@@ -23,6 +23,10 @@
 @use 'components/Footer/Footer';
 @use 'components/CustomSelect/CustomSelect';
 @use 'components/ProvidersStrip/ProvidersStrip';
+@use 'components/admin/AdminDashboard';
+@use "components/admin/ChatAdmin";
+@use "components/admin/VerificationAdmin";
+@use "components/admin/login/AdminLoginForm";
 
 @use 'components/deposit-saved-card/deposit-saved-card';
 @use 'components/withdrawAdmin/withdrawAdmin';

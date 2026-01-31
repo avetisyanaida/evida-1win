@@ -76,7 +76,6 @@ export default function Profile() {
         }
     };
 
-    // 🔥 ՀԻՄՆԱԿԱՆ ՖԻՔՍԸ ԱՅՍՏԵՂ Է
     useEffect(() => {
         fetchBalance();
     }, [searchParams]);

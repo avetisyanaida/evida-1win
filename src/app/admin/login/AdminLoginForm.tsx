@@ -26,27 +26,15 @@ export default function AdminLoginForm() {
     };
 
     return (
-        <div style={{ padding: 40, color: "white", margin: "auto" }}>
+        <div className={'admin-login-form'}>
             <h2>Admin Login</h2>
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: '20px',
-                width: '400px',
-                alignItems: "center",
-                justifyContent: "center",
-                margin: 'auto',
-                backgroundColor: "white",
-                borderRadius: '5px',
-                padding: '30px',
-            }}>
+            <div className={'admin-login-form-inner'}>
                 <label>
                     <input
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        style={{ width: "300px", height: "40px", padding: "15px" }}
                     />
                 </label>
                 <label>
@@ -55,15 +43,10 @@ export default function AdminLoginForm() {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        style={{ width: "300px", height: "40px", padding: "15px" }}
                     />
                 </label>
                 {err && <p style={{ color: "red" }}>{err}</p>}
-                <button style={{
-                    padding: "10px 30px",
-                    borderRadius: "15px",
-                    cursor: "pointer",
-                }} onClick={login}>Մուտք</button>
+                <button className={'admin-login-form-btn'} onClick={login}>Մուտք</button>
             </div>
         </div>
     );

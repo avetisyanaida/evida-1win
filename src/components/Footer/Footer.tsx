@@ -7,7 +7,6 @@ export default function Footer() {
     return (
         <footer>
             <div className="footer-content">
-                {/* TOP WARNING */}
                 <div className="footer-content-top">
                     <div className="footer-content-top-content">
                         <span>21+</span>
@@ -15,10 +14,8 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* LISTS */}
                 <div className="footer-content-item">
 
-                    {/* CASINO */}
                     <div className="footer-lists">
                         <h4>{t("footer.casino")}</h4>
                         <ul>
@@ -29,7 +26,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* EVIDA */}
                     <div className="footer-lists">
                         <h4>{t("footer.evida")}</h4>
                         <ul>
@@ -40,7 +36,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* INFORMATION */}
                     <div className="footer-lists">
                         <h4>{t("footer.info")}</h4>
                         <ul>
@@ -49,7 +44,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* LIVE CASINO */}
                     <div className="footer-lists">
                         <h4>{t("footer.live_casino")}</h4>
                         <ul>
@@ -60,7 +54,6 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* COPYRIGHT */}
                 <div className="footer-content-bottom">
                     <p>{t("footer.rights")}</p>
                 </div>

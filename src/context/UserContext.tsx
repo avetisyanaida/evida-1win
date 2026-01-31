@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {createContext, PropsWithChildren, ReactNode, useContext, useEffect, useState} from "react";
 import { supabase } from "@/src/hooks/supabaseClient";
 
 interface UserData {
@@ -20,7 +20,7 @@ const UserContext = createContext<UserContextType>({
     loading: true,
 });
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
+export const UserProvider = ({ children }: PropsWithChildren) => {
     const [user, setUser] = useState<UserData | null>(null);
     const [loading, setLoading] = useState(true);
 

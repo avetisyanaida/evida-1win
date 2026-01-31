@@ -19,7 +19,7 @@ export const useBalanceRealtime = (
                     filter: `user_id=eq.${userId}`,
                 },
                 () => {
-                    refreshBalance(); // 🔥 առանց refresh
+                    refreshBalance();
                 }
             )
             .subscribe();

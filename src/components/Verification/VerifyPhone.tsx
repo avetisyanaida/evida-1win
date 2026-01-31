@@ -39,7 +39,6 @@ export const VerifyPhone = ({ user }: VerifyPhoneProps) => {
         getAuthUser().then(r => r);
     }, []);
 
-    // ✅ Ուղարկում է OTP
     const sendOtp = async () => {
         if (!phone) {
             alert(t("phone_enter_number"));
@@ -57,7 +56,6 @@ export const VerifyPhone = ({ user }: VerifyPhoneProps) => {
         setLoading(false);
     };
 
-    // ✅ Ստուգում է OTP
     const verifyOtp = async () => {
         if (!code) {
             alert(t("phone_enter_code"));

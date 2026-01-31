@@ -36,21 +36,21 @@ export default function AdminDashboard({ verifs, users }: AdminDashboardProps) {
     });
 
     return (
-        <div className={'dashboard-wrap'} style={dashboardWrap}>
-            <h1 style={title}>🛠 Admin Dashboard</h1>
+        <div className={'dashboard-wrap'}>
+            <h1  className={'dashboard-title'}>🛠 Admin Dashboard</h1>
 
-            <div style={section}>
-                <h2 style={sectionTitle}>📁 Վերիֆիկացիայի փաստաթղթերը</h2>
+            <div className={'dashboard-body'}>
+                <h2 className={'dashboard-body-title'}>📁 Վերիֆիկացիայի փաստաթղթերը</h2>
                 <VerificationAdmin data={rows} />
             </div>
 
-            <div style={section}>
-                <h2 style={sectionTitle}>💬 Ադմին Չատ</h2>
+            <div className={'dashboard-body'}>
+                <h2 className={'dashboard-body-title'}>💬 Ադմին Չատ</h2>
                 <ChatAdmin />
             </div>
 
-            <div style={section}>
-                <h2 style={sectionTitle}>
+            <div className={'dashboard-body'}>
+                <h2 className={'dashboard-body-title'}>
                     💸 Withdraw Requests
                 </h2>
                 <WithdrawAdmin/>
@@ -58,32 +58,3 @@ export default function AdminDashboard({ verifs, users }: AdminDashboardProps) {
         </div>
     );
 }
-
-const dashboardWrap: React.CSSProperties = {
-    padding: "25px",
-    background: "#0d0d0d",
-    minHeight: "100vh",
-    color: "white",
-    fontFamily: "sans-serif",
-};
-
-const title: React.CSSProperties = {
-    fontSize: "28px",
-    marginBottom: "25px",
-    fontWeight: "bold",
-};
-
-const section: React.CSSProperties = {
-    background: "#111",
-    padding: "20px",
-    borderRadius: "12px",
-    marginBottom: "35px",
-    border: "1px solid #222",
-};
-
-const sectionTitle: React.CSSProperties = {
-    marginBottom: "15px",
-    fontSize: "20px",
-    borderBottom: "1px solid #333",
-    paddingBottom: "8px",
-};

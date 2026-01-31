@@ -41,7 +41,6 @@ export const NavWrap = ({onLoginClick}: Props) => {
         }
     };
 
-
     return (
         <>
             {isTabletLarge ? (
@@ -62,7 +61,6 @@ export const NavWrap = ({onLoginClick}: Props) => {
                                 </button>
                             </li>
 
-                            {/* 👇 ԱՅՍ ՄԱՍՆ Է ՓՈԽՎՈՒՄ */}
                             <li className="deposit-li">
                                 <button className="wallet-btn" onClick={handleDepositClick}>
                                     <Image

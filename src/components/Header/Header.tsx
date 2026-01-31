@@ -229,10 +229,10 @@ export const Header = ({
                                     onWithdraw={onWithdraw}
                                     onHistory={handleHistory}
                                 />
-
-                                <LangSwitcher/>
                             </>
                         )}
+
+                        <LangSwitcher/>
                     </ul>
                 ) : (
                     <ul className="user-info">

@@ -1,0 +1,82 @@
+.verification-admin {
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    th {
+      padding: 12px;
+      background: #1a1a1a;
+      border-bottom: 1px solid #333;
+      text-align: left as const;
+      font-weight: bold;
+      color: #ddd;
+    }
+    tr {
+      .preview-btn {
+        padding: 6px 12px;
+        background: #2980b9;
+        border-radius: 6px;
+        color: white;
+      }
+      .badge-pending {
+        background: #f39c12;
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: black;
+        font-weight: bold;
+      }
+      .badge-approved {
+        background: #2ecc71;
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: black;
+        font-weight: bold;
+      }
+      .badge-rejected {
+        background: #e74c3c;
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+      }
+      .approve-btn {
+        padding: 8px 12px;
+        background: #27ae60;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-right: 5px;
+        color: white;
+        border: none;
+      }
+      .reject-btn {
+        padding: 8px 12px;
+        background: #c0392b;
+        border-radius: 6px;
+        cursor: pointer;
+        color: white;
+        border: none;
+      }
+      .comment-box {
+        width: 150px;
+        height: 60px;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: white;
+        border-radius: 6px;
+        padding: 6px;
+      }
+    }
+  }
+
+}

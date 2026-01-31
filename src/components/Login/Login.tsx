@@ -84,16 +84,15 @@ export const Login = ({ onClose }: Props) => {
             });
 
             if (error) {
-                // 💡 Հատուկ ստուգենք rate limit–ը
                 if (error.message?.toLowerCase().includes("rate limit")) {
-                    setError(t("loginModal.rateLimit")); // օրինակ՝ "Դուք չափից շատ նամակ եք խնդրել, փորձեք մի փոքր ուշ"
+                    setError(t("loginModal.rateLimit"));
                 } else {
                     setError(error.message || t("loginModal.error"));
                 }
                 return; // ✅ Չգնանք success case
             }
 
-            setMessage(t("loginModal.resetSent")); // "Նամակը ուղարկված է ձեր էլ․ հասցեին"
+            setMessage(t("loginModal.resetSent"));
         } catch (err: any) {
             setError(err.message || t("loginModal.error"));
         } finally {
@@ -119,7 +118,6 @@ export const Login = ({ onClose }: Props) => {
                             disabled={loading}
                             placeholder={t("loginModal.email")}
                         />
-
                     </label>
                     <label>
                         <input

@@ -4,14 +4,13 @@ import "@/src/assets/styles/mixin.scss";
 import "@/src/assets/styles/variables.scss";
 import "@/src/assets/icons/icon.css";
 import "@/src/i18n";
-
-import type { ReactNode } from "react";
+import type {PropsWithChildren} from "react";
 import RootClient from "@/src/components/RootClient/RootClient";
 import {UserProvider} from "@/src/context/UserContext";
 
 export const dynamic = 'force-dynamic';
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }:PropsWithChildren) {
     return (
         <html lang="en">
         <head>

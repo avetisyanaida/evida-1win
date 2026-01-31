@@ -41,7 +41,6 @@ export const TransactionHistory = () => {
                         filter: `user_id=eq.${userId}`,
                     },
                     () => {
-                        // 🔥 realtime միայն առաջին էջում
                         fetchTransactions(1);
                     }
                 )
@@ -112,7 +111,6 @@ export const TransactionHistory = () => {
                 </tbody>
             </table>
 
-            {/* 🔽 Pagination controls — առանց դիզայն խախտելու */}
             <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 20 }}>
                 <button
                     style={{

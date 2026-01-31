@@ -19,9 +19,6 @@ export default function ResetPassword() {
 
     const [isRecovery, setIsRecovery] = useState<boolean | null>(null);
 
-    /* ----------------------------------
-       1️⃣ CHECK — սա իսկապե՞ս recovery link է
-    ---------------------------------- */
     useEffect(() => {
         const hash = window.location.hash;
 
@@ -40,9 +37,6 @@ export default function ResetPassword() {
         }
     }, []);
 
-    /* ----------------------------------
-       2️⃣ APPLY RECOVERY SESSION
-    ---------------------------------- */
     useEffect(() => {
         if (isRecovery !== true) return;
 
@@ -70,9 +64,6 @@ export default function ResetPassword() {
         void applyRecoverySession();
     }, [isRecovery, t]);
 
-    /* ----------------------------------
-       ❌ NOT A RECOVERY LINK → EXIT
-    ---------------------------------- */
     useEffect(() => {
         if (isRecovery === false) {
             router.replace("/");
@@ -82,10 +73,6 @@ export default function ResetPassword() {
     if (isRecovery === null) {
         return null; // կամ loader
     }
-
-    /* ----------------------------------
-       3️⃣ UPDATE PASSWORD
-    ---------------------------------- */
     const handleUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -120,96 +107,45 @@ export default function ResetPassword() {
         setMsg(t("reset.success"));
 
         setTimeout(async () => {
-            await supabase.auth.signOut(); // մաքրում ենք recovery session-ը
+            await supabase.auth.signOut();
             router.push("/admin");
         }, 1200);
     };
 
-    /* ----------------------------------
-       UI
-    ---------------------------------- */
     return (
-        <div
-            style={{
-                padding: "40px",
-                background: "#1a1a1a",
-                color: "white",
-                textAlign: "center",
-                borderRadius: "12px",
-                maxWidth: "450px",
-                margin: "50px auto",
-            }}
-        >
+        <div className={'reset-password-wrapper'}>
             <h2 style={{ marginBottom: "20px" }}>{t("reset.title")}</h2>
-
             {msg && (
-                <p
-                    style={{
-                        marginBottom: "20px",
-                        color: msg.includes("success") ? "#4ade80" : "#ff4d4d",
-                    }}
-                >
+                <p style={{marginBottom: "20px", color: msg.includes("success") ? "#4ade80" : "#ff4d4d",}}>
                     {msg}
                 </p>
             )}
-
-            <form
-                onSubmit={handleUpdate}
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "15px",
-                }}
-            >
-                <div style={{ position: "relative" }}>
+            <form onSubmit={handleUpdate}>
+                <div className={'form-wrapper'}>
                     <input
                         type={showPassword ? "text" : "password"}
                         autoComplete="new-password"
                         placeholder={t("reset.newPassword")}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        style={{
-                            padding: "12px",
-                            borderRadius: "6px",
-                            border: "1px solid #333",
-                            width: "100%",
-                        }}
                         required
                     />
                     <i
-                        style={{
-                            position: "absolute",
-                            right: "14px",
-                            top: "14px",
-                            cursor: "pointer",
-                        }}
                         className={showPassword ? "icon eye-open" : "icon eye-close"}
                         onClick={() => setShowPassword(!showPassword)}
                     />
                 </div>
 
-                <div style={{ position: "relative" }}>
+                <div className={'form-wrapper'}>
                     <input
                         type={showConfirmPassword ? "text" : "password"}
                         autoComplete="new-password"
                         placeholder={t("reset.confirmPassword")}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        style={{
-                            padding: "12px",
-                            borderRadius: "6px",
-                            border: "1px solid #333",
-                            width: "100%",
-                        }}
                         required
                     />
                     <i
-                        style={{
-                            position: "absolute",
-                            right: "14px",
-                            top: "14px",
-                            cursor: "pointer",
-                        }}
                         className={
                             showConfirmPassword ? "icon eye-open" : "icon eye-close"
                         }
@@ -220,17 +156,11 @@ export default function ResetPassword() {
                 </div>
 
                 <button
+                    className={'form-wrapper-button'}
                     type="submit"
                     disabled={loading}
                     style={{
-                        padding: "12px",
-                        background: "#4f46e5",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "6px",
                         cursor: loading ? "not-allowed" : "pointer",
-                        fontWeight: "bold",
-                        fontSize: "16px",
                     }}
                 >
                     {loading ? t("reset.saving") : t("reset.confirm")}

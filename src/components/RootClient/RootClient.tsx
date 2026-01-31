@@ -1,7 +1,7 @@
 "use client";
 
 import "@/src/i18n";
-import React, { useState } from "react";
+import React, {PropsWithChildren, useState} from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 
@@ -21,7 +21,7 @@ import { useScrollTop } from "@/src/hooks/useScrollTop";
 import { useUser } from "@/src/context/UserContext";
 import {ProvidersStrip} from "@/src/components/ProvidersStrip/ProvidersStrip";
 
-export default function RootClient({ children }: { children: React.ReactNode }) {
+export default function RootClient({ children }: PropsWithChildren) {
     useScrollTop();
 
     const pathname = usePathname();

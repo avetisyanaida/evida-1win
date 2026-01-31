@@ -25,7 +25,6 @@ export const useAccountLimit = (): AccountLimitHook => {
     const isLimited =
         currentLimit ? new Date(currentLimit.until) > new Date() : false;
 
-    // ✅ 1. ՍԿԶԲՈՒՄ removeLimit
     const removeLimit = useCallback(
         async (id?: string) => {
             const uid = id || userId;
@@ -36,7 +35,6 @@ export const useAccountLimit = (): AccountLimitHook => {
         [userId]
     );
 
-    // ✅ 2. ՀԵՏՈ fetchLimit
     const fetchLimit = useCallback(
         async (id: string) => {
             const { data } = await supabase
@@ -102,6 +100,5 @@ export const useAccountLimit = (): AccountLimitHook => {
         },
         [userId]
     );
-
     return { currentLimit, loading, isLimited, setLimit, removeLimit, init };
 };

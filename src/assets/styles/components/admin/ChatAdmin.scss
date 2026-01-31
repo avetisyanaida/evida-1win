@@ -1,0 +1,40 @@
+.chatbox {
+  background: #111;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  .chatArea {
+    background: #1b1b1b;
+    padding: 10px;
+    border-radius: 8px;
+    max-height: 230px;
+    overflow-y: auto as const;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column as const;
+  }
+  .chatInput {
+    flex: 1;
+    background: #222;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+  }
+  .btnSend {
+    background: #3498db;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+  }
+  .btnClose {
+    background: #c0392b;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+  }
+}

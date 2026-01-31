@@ -20,7 +20,6 @@ export const DocumentUpload = ({
                                }: DocumentUploadProps) => {
     const { t } = useTranslation();
 
-    // ✔️ FILE TYPES
     const FILE_TYPES: Record<string, string> = {
         doc_front: t("doc_front"),
         doc_back: t("doc_back"),
@@ -32,7 +31,6 @@ export const DocumentUpload = ({
     const [openFiled, setOpenFiled] = useState(false);
     const [selectedType, setSelectedType] = useState<string>("");
 
-    // 🔥 CHECK EXISTING VERIFICATION ROW
     const getExistingStatus = async (type: string) => {
         const { data } = await supabase
             .from("verifications")
@@ -76,18 +74,11 @@ export const DocumentUpload = ({
                 if (old && old.status !== "rejected") continue;
 
                 if (old && old.status === "rejected") {
-                    // DB row delete
                     await supabase.from("verifications").delete().eq("id", old.id);
-
-                    // 🔥 CLEAR LOCAL STATE so UI does NOT show "uploaded"
                     setUploadedFiles((prev) => ({ ...prev, [type]: null }));
                 }
-
-
-
                 if (!file) continue;
 
-                // New file path
                 const filePath = `${userId}/${uuidv4()}_${file.name}`;
 
                 const { error: uploadError } = await supabase.storage
@@ -123,7 +114,6 @@ export const DocumentUpload = ({
             setUploading(false);
         }
     };
-
 
     return (
         <>

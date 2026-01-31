@@ -1,10 +1,6 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 
-export default function AdminLayout({
-                                        children,
-                                    }: {
-    children: React.ReactNode;
-}) {
+export default function AdminLayout({children}:PropsWithChildren) {
     return (
         <div className="admin-body">
             {children}

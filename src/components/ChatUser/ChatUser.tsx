@@ -18,7 +18,6 @@ export const ChatUser = () => {
     const [chatClosed, setChatClosed] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-    // -------- 1) Load user --------------
     useEffect(() => {
         const loadUser = async () => {
             const { data } = await supabase.auth.getUser();
@@ -32,7 +31,6 @@ export const ChatUser = () => {
         loadUser();
     }, []);
 
-    // ------- helper: load messages -------
     const loadMessages = async (uid: string) => {
         const { data, error } = await supabase
             .from("messages")
@@ -43,20 +41,17 @@ export const ChatUser = () => {
         if (!error) setMessages(data || []);
     };
 
-    // -------- 2) Load messages when user ready --------
     useEffect(() => {
         if (!user?.id) return;
         loadMessages(user.id);
     }, [user?.id]);
 
-    // -------- 3) Send message (local instant visible) --------
     const sendMsg = async () => {
         if (!newMsg.trim() || !user?.id || chatClosed) return;
 
         const text = newMsg.trim();
         setNewMsg("");
 
-        // ⭐ LOCAL instant message (UI immediately updates)
         const localMessage: Message = {
             message: text,
             sender: "user",
@@ -65,7 +60,6 @@ export const ChatUser = () => {
 
         setMessages((prev) => [...prev, localMessage]);
 
-        // ⭐ Then save to supabase in background
         const { error } = await supabase.from("messages").insert([
             {
                 user_id: user.id,
@@ -76,12 +70,8 @@ export const ChatUser = () => {
         ]);
 
         if (error) console.error("Send error:", error);
-
-        // Optionally reload real messages from DB to sync IDs
-        // loadMessages(user.id);
     };
 
-    // -------- 4) Close chat --------
     const closeChat = async () => {
         if (!user?.id) return;
 
@@ -111,11 +101,10 @@ export const ChatUser = () => {
         setChatClosed(true);
     };
 
-    // -------- Floating open button --------
     if (!isOpen) {
         return (
             <button
-                style={styles.floatingButton}
+                className={'floating-btn'}
                 onClick={() => setIsOpen(true)}
             >
                 💬
@@ -124,13 +113,13 @@ export const ChatUser = () => {
     }
 
     return (
-        <div style={styles.wrapper}>
-            <div style={styles.header}>
+        <div className={'chat-wrapper'}>
+            <div className={'chat-wrapper-content'}>
                 <h4>💬 Support Chat</h4>
-                <button style={styles.closeX} onClick={() => setIsOpen(false)}>✖</button>
+                <button className={'chat-wrapper-btn-close'} onClick={() => setIsOpen(false)}>✖</button>
             </div>
 
-            <div style={styles.chat}>
+            <div className={'chat-wrapper-messages'}>
                 {messages.length === 0 ? (
                     <p style={{ color: "#888", textAlign: "center" }}>
                         Գրիր հաղորդագրություն 👇
@@ -164,20 +153,19 @@ export const ChatUser = () => {
 
             {!chatClosed && (
                 <>
-                    <div style={styles.inputRow}>
+                    <div className={'input-row'}>
                         <input
                             value={newMsg}
                             onChange={(e) => setNewMsg(e.target.value)}
                             placeholder="Գրիր հաղորդագրություն..."
-                            style={styles.input}
                             onKeyDown={(e) => e.key === "Enter" && sendMsg()}
                         />
-                        <button onClick={sendMsg} style={styles.sendButton}>
+                        <button onClick={sendMsg} className={'send-button'}>
                             📤
                         </button>
                     </div>
 
-                    <button onClick={closeChat} style={styles.endButton}>
+                    <button onClick={closeChat} className={'end-button'}>
                         🔒 Փակել զրույցը
                     </button>
                 </>
@@ -186,62 +174,7 @@ export const ChatUser = () => {
     );
 };
 
-
-// ----------- styles ----------
 const styles = {
-    floatingButton: {
-        position: "fixed" as const,
-        bottom: "80px",
-        right: "28px",
-        background: "#18133BFF",
-        color: "#fff",
-        border: "none",
-        borderRadius: "50%",
-        width: "60px",
-        height: "60px",
-        fontSize: "28px",
-        cursor: "pointer",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-        zIndex: 1000,
-    },
-    wrapper: {
-        position: "fixed" as const,
-        bottom: "80px",
-        right: "28px",
-        width: "350px",
-        background: "#0b0b0b",
-        color: "#fff",
-        borderRadius: "50%",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
-        padding: 10,
-        display: "flex",
-        flexDirection: "column" as const,
-        zIndex: 1001,
-    },
-    header: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: 8,
-    },
-    closeX: {
-        background: "none",
-        border: "none",
-        color: "#fff",
-        fontSize: "18px",
-        cursor: "pointer",
-    },
-    chat: {
-        height: "250px",
-        overflowY: "auto" as const,
-        display: "flex",
-        flexDirection: "column" as const,
-        gap: 8,
-        background: "#111",
-        padding: 10,
-        borderRadius: 8,
-        marginBottom: 10,
-    },
     msg: {
         maxWidth: "70%",
         padding: "8px 10px",
@@ -249,31 +182,4 @@ const styles = {
         color: "#fff",
     },
     time: { fontSize: 10, opacity: 0.6 },
-    inputRow: { display: "flex", gap: 8 },
-    input: {
-        flex: 1,
-        padding: 8,
-        borderRadius: 6,
-        border: "1px solid #333",
-        background: "#222",
-        color: "#fff",
-    },
-    sendButton: {
-        background: "#18133BFF",
-        border: "none",
-        borderRadius: 6,
-        padding: "8px 10px",
-        cursor: "pointer",
-        color: "#fff",
-    },
-    endButton: {
-        background: "#c0392b",
-        border: "none",
-        borderRadius: 6,
-        padding: "8px 12px",
-        cursor: "pointer",
-        color: "#fff",
-        marginTop: 8,
-        width: "100%",
-    },
 };

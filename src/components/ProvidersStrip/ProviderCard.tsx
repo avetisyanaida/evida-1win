@@ -10,18 +10,13 @@ interface Props {
     glow?: string;
 }
 
-/**
- * ⚠️ hydration-safe animated number
- */
 const useAnimatedNumber = (target: number) => {
     const [value, setValue] = useState<number | null>(null);
 
-    // ✅ 1. deterministic first render
     useEffect(() => {
         setValue(target);
     }, [target]);
 
-    // ✅ 2. animation ONLY on client
     useEffect(() => {
         if (value === null) return;
 
@@ -38,7 +33,6 @@ const useAnimatedNumber = (target: number) => {
         return () => clearInterval(id);
     }, [value, target]);
 
-    // ✅ 3. FIXED locale → no mismatch
     return value === null
         ? target.toFixed(2)
         : value.toLocaleString("en-US", {

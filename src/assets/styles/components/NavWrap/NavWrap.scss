@@ -29,6 +29,9 @@
       }
       li {
         width: calc(20% - 16px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .wallet-btn {
           position: absolute;
           top: -25px;
