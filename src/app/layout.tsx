@@ -15,14 +15,16 @@ export default function RootLayout({ children }:PropsWithChildren) {
         <html lang="en">
         <head>
             <meta charSet="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable={'no'}" />
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link rel="icon" type="image/png" href="/logo-profile.png" />
             <title>EVIDA CASINO</title>
         </head>
         <body className={'app-body'}>
-        <UserProvider>
-            <RootClient>{children}</RootClient>
-        </UserProvider>
+        <div className="main-content">
+            <UserProvider>
+                <RootClient>{children}</RootClient>
+            </UserProvider>
+        </div>
         </body>
         </html>
     );
