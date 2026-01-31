@@ -14,62 +14,64 @@ export default function ResetPassword() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [msg, setMsg] = useState<string | null>(null);
     const [ready, setReady] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
 
-    // 🔑 1. Exchange reset code → session
+    // 🔑 STEP 1 — exchange reset code → session
     useEffect(() => {
         const run = async () => {
-            // միշտ logout՝ որ սովորական browser-ով էլ աշխատի
-            await supabase.auth.signOut();
+            try {
+                // միշտ logout, որ existing session-ը չխանգարի
+                await supabase.auth.signOut();
 
-            const params = new URLSearchParams(window.location.search);
-            const code = params.get("code");
+                const params = new URLSearchParams(window.location.search);
+                const code = params.get("code");
 
-            if (!code) {
-                setMsg(t("reset.error"));
-                return;
+                if (!code) {
+                    setError("Invalid or missing reset code");
+                    return;
+                }
+
+                const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+                if (error) {
+                    console.error("RESET EXCHANGE ERROR:", error);
+                    setError("Reset link is invalid or expired");
+                    return;
+                }
+
+                setReady(true);
+            } catch (e) {
+                console.error(e);
+                setError("Unexpected reset error");
             }
-
-            const { error } = await supabase.auth.exchangeCodeForSession(code);
-
-            if (error) {
-                console.error("RESET EXCHANGE ERROR:", error);
-                setMsg(t("reset.error"));
-                return;
-            }
-
-            setReady(true);
         };
 
         run();
-    }, [t]);
+    }, []);
 
-    if (!ready) {
-        return null; // կամ loader
-    }
-
-    // 🔐 2. Update password
+    // 🔐 STEP 2 — update password
     const submit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!password || !confirmPassword) {
-            setMsg(t("reset.fillFields"));
+            setError(t("reset.fillFields"));
             return;
         }
 
         if (password !== confirmPassword) {
-            setMsg(t("reset.notMatch"));
+            setError(t("reset.notMatch"));
             return;
         }
 
         if (password.length < 6) {
-            setMsg(t("reset.minLength"));
+            setError(t("reset.minLength"));
             return;
         }
 
         setLoading(true);
-        setMsg(null);
+        setError(null);
 
         const { error } = await supabase.auth.updateUser({ password });
 
@@ -77,23 +79,48 @@ export default function ResetPassword() {
 
         if (error) {
             console.error("UPDATE PASSWORD ERROR:", error);
-            setMsg(t("reset.error"));
+            setError("Failed to update password");
             return;
         }
 
-        setMsg(t("reset.success"));
+        setSuccess(true);
 
         setTimeout(async () => {
             await supabase.auth.signOut();
             router.replace("/login");
-        }, 1200);
+        }, 1500);
     };
 
+    // 🟡 LOADING / ERROR STATE — երբեք դատարկ էջ
+    if (!ready) {
+        return (
+            <div className="reset-password-wrapper">
+                <h2>{t("reset.title")}</h2>
+
+                {!error && <p>Loading reset…</p>}
+                {error && <p style={{ color: "red" }}>{error}</p>}
+            </div>
+        );
+    }
+
+    // ✅ SUCCESS STATE
+    if (success) {
+        return (
+            <div className="reset-password-wrapper">
+                <h2>{t("reset.title")}</h2>
+                <p style={{ color: "#4ade80" }}>
+                    {t("reset.success")}
+                </p>
+            </div>
+        );
+    }
+
+    // 🟢 MAIN FORM
     return (
         <div className="reset-password-wrapper">
             <h2>{t("reset.title")}</h2>
 
-            {msg && <p>{msg}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
             <form onSubmit={submit}>
                 <div>
