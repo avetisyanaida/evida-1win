@@ -1,6 +1,6 @@
 "use client";
 
-import {createContext, PropsWithChildren, ReactNode, useContext, useEffect, useState} from "react";
+import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
 import { supabase } from "@/src/hooks/supabaseClient";
 
 interface UserData {
@@ -26,6 +26,17 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
 
     const loadUser = async () => {
         setLoading(true);
+
+        if (typeof window !== "undefined") {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get("type");
+
+            if (type === "recovery") {
+                setUser(null); // ⛔ reset-ը login ՉԷ
+                setLoading(false);
+                return;
+            }
+        }
 
         const { data } = await supabase.auth.getSession();
         const authUser = data.session?.user;
