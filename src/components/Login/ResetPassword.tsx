@@ -19,27 +19,23 @@ export default function ResetPassword() {
 
     // 1️⃣ PKCE exchange
     useEffect(() => {
-        const run = async () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get("type") !== "recovery") {
-                router.replace("/");
-                return;
-            }
+        console.log("🟡 RESET useEffect START");
 
-            const { error } = await supabase.auth.exchangeCodeForSession(
+        const run = async () => {
+            console.log("🟡 BEFORE exchangeCodeForSession");
+
+            const res = await supabase.auth.exchangeCodeForSession(
                 window.location.search
             );
 
-            if (error) {
-                setMsg(t("reset.error"));
-                return;
-            }
+            console.log("🟡 AFTER exchangeCodeForSession", res);
 
             setReady(true);
         };
 
         run();
-    }, [router, t]);
+    }, []);
+
 
     if (!ready) return null;
 
