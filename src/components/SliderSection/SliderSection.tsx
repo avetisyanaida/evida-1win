@@ -38,10 +38,10 @@ export const SliderSection = () => {
                             <Image
                                 src={slide.image}
                                 alt={slide.title}
-                                priority={slide.id === 1}
                                 fill
+                                priority={slide.id === 1}
                                 sizes="100vw"
-                                style={{ objectFit: "cover" }}
+                                className="slide-image"
                             />
                         </div>
                     ))}

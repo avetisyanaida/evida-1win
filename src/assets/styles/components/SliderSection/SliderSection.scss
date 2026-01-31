@@ -5,32 +5,33 @@
   background: #000;
   padding: 40px 0;
   width: 100%;
+  @include screen-max-width-767 {
+    padding: 0;
+  }
 
   .slide {
-    width: 100%;
-    height: 337px;
-    overflow: hidden;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 408px;
+    overflow: hidden;
+
     @include screen-max-width-1200 {
-      height: 350px;
+      height: 337px;
     }
+
     @include screen-max-width-767 {
-      height: auto;
+      height: 180px;
+    }
+  }
+  .slide-image {
+    object-fit: cover;
+    object-position: center;
+    @include screen-max-width-1500 {
+      object-fit: contain;
     }
   }
 
   .slider {
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-      display: block;
-      cursor: pointer;
-    }
     h3 {
       text-align: center;
       color: white;
@@ -98,6 +99,7 @@
 
 .slick-track {
   width: 100%;
+  height: 100%;
 }
 
 .slick-prev,
@@ -109,8 +111,5 @@
   display: none !important;
 }
 
-.slider-wrapper {
-  min-height: 500px;
-}
 
 
