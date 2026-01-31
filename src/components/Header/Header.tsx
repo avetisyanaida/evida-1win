@@ -236,11 +236,15 @@ export const Header = ({
                 ) : (
                     <ul className="user-info">
                         {!isLoggedIn ? (
+                            <>
                                 <AuthButtons
                                     onLoginClick={onLoginClick}
                                     onSignupClick={onSignupClick}
                                     t={t}
                                 />
+                                <LangSwitcher/>
+                            </>
+
                         ) : (
                             <>
                                 <UserMenu
