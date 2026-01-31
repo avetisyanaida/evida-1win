@@ -20,11 +20,11 @@ export default function RootLayout({ children }:PropsWithChildren) {
             <title>EVIDA CASINO</title>
         </head>
         <body className={'app-body'}>
-        <div className="main-content">
+        <main className="main-content">
             <UserProvider>
                 <RootClient>{children}</RootClient>
             </UserProvider>
-        </div>
+        </main>
         </body>
         </html>
     );
