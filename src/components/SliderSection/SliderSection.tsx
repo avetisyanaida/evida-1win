@@ -43,6 +43,7 @@ export const SliderSection = () => {
                     src={slide.desktop}
                     alt={slide.title}
                     fill
+                    priority
                     sizes="(max-width: 768px) 100vw, 1920px"
                     className="hero-image"
                 />
