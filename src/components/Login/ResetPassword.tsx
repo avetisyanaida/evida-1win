@@ -15,8 +15,12 @@ export default function ResetPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    console.log("Code from URL:", code)
+
+
     // 🔒 guard — թույլ չի տալիս exchangeCodeForSession-ը կանչվի 2 անգամ
     const exchangedRef = useRef(false);
+
 
     useEffect(() => {
         if (!code) {
@@ -27,12 +31,20 @@ export default function ResetPage() {
         if (exchangedRef.current) return;
         exchangedRef.current = true;
 
+        // ResetPage.js - փոխիր սա
         supabase.auth
             .exchangeCodeForSession(code)
-            .then(({ error }) => {
+            .then(({ data, error }) => {
                 if (error) {
                     console.error("❌ exchange error", error);
-                    setError("Reset link expired");
+                    // Ստուգիր, եթե արդեն ունենք սեսիա, գուցե exchange-ի կարիք չկա
+                    supabase.auth.getSession().then(({ data: sessionData }) => {
+                        if (sessionData.session) {
+                            setReady(true);
+                        } else {
+                            setError("Reset link expired or invalid");
+                        }
+                    });
                 } else {
                     setReady(true);
                 }
