@@ -43,11 +43,11 @@ export default function RootClient({ children }: PropsWithChildren) {
 
     const isResetPage = pathname.startsWith("/reset"); // Ավելացրու սա
     const isCasino = pathname === "/" || pathname === "/profile" || !!provider;
-    const showFullLayout = isCasino && !isWallet && isResetPage;
+    const showFullLayout = isCasino && !isWallet;
 
     return (
         <CasinoProvider>
-            {!isAdmin && (
+            {!isAdmin && !isResetPage && (
                 <Header
                     isLoggedIn={isLoggedIn}
                     userName={user?.name ?? ""}

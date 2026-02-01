@@ -79,19 +79,27 @@ export default function ResetPage() {
         return <p>Checking reset link…</p>;
     }
 
+    // ResetPage-ի ներսում return-ը փոխիր այսպես.
     return (
-        <div>
-            <input
-                type="password"
-                placeholder="New password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                disabled={loading}
-            />
+        <div className="reset-wrapper">
+            <form
+                onSubmit={(e) => { e.preventDefault(); save(); }}
+                className="reset-form"
+            >
+                <input
+                    name="password" // Կարևոր է browser-ի համար
+                    type="password"
+                    placeholder="New password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    disabled={loading}
+                    autoComplete="new-password"
+                />
 
-            <button onClick={save} disabled={loading}>
-                {loading ? "Saving…" : "Save password"}
-            </button>
+                <button type="submit" disabled={loading}>
+                    {loading ? "Saving…" : "Save password"}
+                </button>
+            </form>
         </div>
     );
 }
