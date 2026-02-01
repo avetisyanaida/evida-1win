@@ -186,9 +186,11 @@ export const Header = ({
                 <button className="logo-profile" onClick={handleMenuHover}>
                     <Image
                         src={!isMobile ? "/evida-casino.svg" : "/evida-text.svg"}
-                        alt="logo"
+                        alt="Evida"
                         width={100}
                         height={100}
+                        priority
+                        loading={"eager"}
                     />
                 </button>
 
