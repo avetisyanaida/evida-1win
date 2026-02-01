@@ -18,28 +18,32 @@ export default function ResetContainer() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (!code) {
-            // Եթե URL-ում կոդ չկա, ստուգում ենք՝ գուցե օգտատերը արդեն լոգին է եղել (session ունի)
-            supabase.auth.getSession().then(({ data }) => {
-                if (data.session) {
-                    setReady(true);
-                } else {
-                    setError("Invalid or missing reset link");
-                }
-            });
-            return;
-        }
+        const checkSession = async () => {
+            // 1. Նախ ստուգում ենք՝ գուցե Supabase-ը արդեն մեզ լոգին է արել
+            const { data: { session } } = await supabase.auth.getSession();
 
-        if (!exchangedRef.current) {
-            exchangedRef.current = true;
-            supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+            if (session) {
+                setReady(true);
+                return;
+            }
+
+            // 2. Եթե սեսիա չկա, բայց URL-ում կա կոդ, նոր փորձում ենք exchange անել
+            if (code && !exchangedRef.current) {
+                exchangedRef.current = true;
+                const { error } = await supabase.auth.exchangeCodeForSession(code);
+
                 if (error) {
-                    setError("Reset link expired or used");
+                    console.error("Exchange error:", error.message);
+                    setError("Reset link expired or invalid");
                 } else {
                     setReady(true);
                 }
-            });
-        }
+            } else if (!code) {
+                setError("No reset code found");
+            }
+        };
+
+        checkSession();
     }, [code]);
 
 
