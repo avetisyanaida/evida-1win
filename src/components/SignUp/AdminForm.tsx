@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { AdminProps, ErrorProps } from "./AdminComponent.tsx";
 import { useTranslation } from "react-i18next";
-import {useState} from "react";
+import { useState } from "react";
 
 interface AdminFormProps {
     formData: AdminProps;
@@ -11,10 +11,19 @@ interface AdminFormProps {
     loading?: boolean;
 }
 
-export const AdminForm = ({ formData, handleChange, handleClick, error, loading }: AdminFormProps) => {
+export const AdminForm = ({
+                              formData,
+                              handleChange,
+                              handleClick,
+                              error,
+                              loading
+                          }: AdminFormProps) => {
     const { t } = useTranslation();
+
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+
 
     return (
         <div className="admin-block">
@@ -25,7 +34,7 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    placeholder={t('form.firstName')}
+                    placeholder={t("form.firstName")}
                 />
             </label>
 
@@ -50,14 +59,17 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                     placeholder={t("form.email")}
                 />
             </label>
-            <label className={'label'}>
+
+            <label className="label">
                 <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    placeholder={t("form.phone")}
                 />
             </label>
+
             <label className="label">
                 <input
                     className={error.password ? "error" : ""}
@@ -68,7 +80,13 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                     placeholder={t("form.password")}
                 />
                 <i
-                    style={{position: 'absolute', right: '20px', top: "14px", cursor: 'pointer', backgroundColor: 'white'}}
+                    style={{
+                        position: "absolute",
+                        right: "20px",
+                        top: "14px",
+                        cursor: "pointer",
+                        backgroundColor: "white"
+                    }}
                     className={showPassword ? "icon eye-open" : "icon eye-close"}
                     onClick={() => setShowPassword(!showPassword)}
                 />
@@ -84,15 +102,24 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                     placeholder={t("form.confirmPassword")}
                 />
                 <i
-                    style={{position: 'absolute', right: '20px', top: "14px", cursor: 'pointer', backgroundColor: 'white'}}
+                    style={{
+                        position: "absolute",
+                        right: "20px",
+                        top: "14px",
+                        cursor: "pointer",
+                        backgroundColor: "white"
+                    }}
                     className={showConfirmPassword ? "icon eye-open" : "icon eye-close"}
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 />
             </label>
-            <div className={'checkbox-row'}>
+
+            {/* 18+ */}
+            <div className="checkbox-row">
                 <label className="checkbox-row-label">
                     <input
                         type="checkbox"
+                        className={submitted && !formData.isAdult ? "checkbox-error-state" : ""}
                         checked={formData.isAdult}
                         onChange={() =>
                             handleChange({
@@ -103,10 +130,12 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                             } as any)
                         }
                     />
-                    <span>Ես հաստատում եմ, որ 18 տարեկանից բարձր եմ</span>
+                    <span>{t("form.isAdult")}</span>
                 </label>
             </div>
 
+
+            {/* Promo */}
             <div className="promo-block">
                 <label>
                     <input
@@ -121,7 +150,7 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                             } as any)
                         }
                     />
-                    Ունեմ promo code
+                    {t("form.hasPromo")}
                 </label>
 
                 {formData.hasPromo && (
@@ -130,15 +159,22 @@ export const AdminForm = ({ formData, handleChange, handleClick, error, loading 
                         name="promoCode"
                         value={formData.promoCode}
                         onChange={handleChange}
-                        placeholder="Promo code"
+                        placeholder={t("form.promoPlaceholder")}
                     />
                 )}
             </div>
 
-
-            <button className="log" onClick={handleClick} disabled={loading}>
+            <button
+                className="log"
+                onClick={() => {
+                    setSubmitted(true);
+                    handleClick();
+                }}
+                disabled={loading}
+            >
                 {loading ? t("form.creating") : t("form.createAccount")}
             </button>
+
         </div>
     );
 };

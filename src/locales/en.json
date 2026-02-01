@@ -231,7 +231,12 @@
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "createAccount": "Create Account",
-    "creating": "Creating..."
+    "creating": "Creating...",
+    "isAdult": "I confirm that I am over 18 years old",
+    "hasPromo": "I have a promo code",
+    "promoPlaceholder": "Enter promo code",
+    "adultRequired": "You must confirm that you are over 18 years old to register"
+
   },
   "footer": {
     "age_warning": "Warning: by participating in gambling games you may incur financial losses. Playing while intoxicated or under psychological pressure is strictly prohibited. Individuals under the age of 21 are not allowed to participate in online gambling.",

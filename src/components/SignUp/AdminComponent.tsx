@@ -45,7 +45,7 @@ export const AdminComponent: React.FC<Props> = ({ onClose }) => {
         user_id: "",
         user_code: 0,
         phone: '+374',
-        isAdult: true,
+        isAdult: false,
         promoCode: '',
         hasPromo: false,
     });
@@ -121,6 +121,10 @@ export const AdminComponent: React.FC<Props> = ({ onClose }) => {
     };
 
     const handleClick = async () => {
+        if (!formData.isAdult) {
+            toast.error(t("form.adultRequired"));
+            return;
+        }
         if (!validation()) return;
         setLoading(true);
 
@@ -185,7 +189,7 @@ export const AdminComponent: React.FC<Props> = ({ onClose }) => {
                 user_id: authData.user.id,
                 user_code: 0,
                 phone: "+374",
-                isAdult: true,
+                isAdult: false,
                 promoCode: '',
                 hasPromo: true,
             });
