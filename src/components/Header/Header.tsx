@@ -185,7 +185,7 @@ export const Header = ({
             <div className="main-block-item">
                 <button className="logo-profile" onClick={handleMenuHover}>
                     <Image
-                        src={!isMobile ? "/logo2.png" : "/logo.png"}
+                        src={!isMobile ? "/evida-text.svg" : "/evida-text.svg"}
                         alt="logo"
                         width={100}
                         height={100}

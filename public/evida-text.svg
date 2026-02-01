@@ -1,0 +1,56 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1600 400"
+        width="1600"
+        height="400"
+>
+    <defs>
+        <linearGradient id="textGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6cff8f"/>
+            <stop offset="100%" stop-color="#1fae3a"/>
+        </linearGradient>
+
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow
+                    dx="0"
+                    dy="10"
+                    stdDeviation="18"
+                    flood-color="#0b3d1a"
+                    flood-opacity="0.6"
+            />
+        </filter>
+    </defs>
+
+    <g fill="url(#textGrad)" filter="url(#softShadow)">
+        <!-- E -->
+        <path d="M50 60 H320 V120 H150 V180 H290 V240 H150 V300 H320 V360 H50 Z"/>
+
+        <!-- V -->
+        <path d="M360 60 H450 L540 300 L630 60 H720 L560 360 H520 Z"/>
+
+        <!-- I -->
+        <rect x="760" y="60" width="90" height="300"/>
+
+        <!-- D -->
+        <path d="M900 60 H1080 C1220 60 1300 130 1300 210
+             C1300 290 1220 360 1080 360 H900 Z
+             M990 140 V280 H1060
+             C1120 280 1170 250 1170 210
+             C1170 170 1120 140 1060 140 Z"/>
+
+        <!-- A (FIXED) -->
+        <path d="M1360 360
+             L1450 60
+             H1510
+             L1600 360
+             H1530
+             L1505 280
+             H1395
+             L1370 360
+             Z
+             M1420 230
+             H1480
+             L1450 150
+             Z"/>
+    </g>
+</svg>

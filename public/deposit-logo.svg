@@ -1,0 +1,47 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width="512"
+        height="512"
+>
+    <defs>
+        <radialGradient id="coinGrad" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#a9f58a"/>
+            <stop offset="100%" stop-color="#3fae3f"/>
+        </radialGradient>
+
+        <linearGradient id="letterGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a2a5e"/>
+            <stop offset="100%" stop-color="#10102a"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Green coin -->
+    <circle cx="256" cy="256" r="230" fill="url(#coinGrad)" />
+    <circle
+            cx="256"
+            cy="256"
+            r="230"
+            fill="none"
+            stroke="#6fe36f"
+            stroke-width="18"
+    />
+
+    <!-- Letter E -->
+    <path
+            d="M170 140
+       H340
+       V190
+       H245
+       V240
+       H315
+       V290
+       H245
+       V350
+       H340
+       V400
+       H170
+       Z"
+            fill="url(#letterGrad)"
+    />
+</svg>
