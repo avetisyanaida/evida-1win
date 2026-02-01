@@ -48,6 +48,9 @@ img {
   margin: 0 auto;
   padding: 0 20px;
 }
+.Toastify__toast-container {
+  position: fixed !important;
+}
 .Toastify__toast--success {
   width: 100%;
 }
