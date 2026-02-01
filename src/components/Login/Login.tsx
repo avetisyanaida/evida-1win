@@ -113,7 +113,7 @@ export const Login = ({ onClose }: Props) => {
                         />
                     </label>
 
-                    <label>
+                    <label className={'password-hidden'}>
                         <input
                             type={showPassword ? "text" : "password"}
                             name="password"

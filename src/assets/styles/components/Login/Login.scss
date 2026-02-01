@@ -1,14 +1,17 @@
 @use '../../mixin' as *;
+
 h2 {
   text-align: center;
   font-size: 40px;
 }
+
 label {
   display: flex;
   flex-direction: column;
   height: 60px;
   position: relative;
   margin: 10px 0;
+
   p {
     position: absolute;
     top: -15px;
@@ -18,6 +21,7 @@ label {
     padding: 5px;
     color: white;
   }
+
   input {
     width: 100%;
     height: 100%;
@@ -29,16 +33,19 @@ label {
     background-color: #18133b;
     color: white;
   }
+
   .error {
     border: 2px solid red;
   }
 }
+
 .forgot-pass {
   margin: 20px 0;
   text-align: end;
   cursor: pointer;
   color: white;
 }
+
 .login-buttons {
   display: flex;
   align-items: center;
@@ -57,10 +64,12 @@ label {
     border: none;
   }
 }
+
 .forgot-password {
   p {
     color: white;
   }
+
   button {
     padding: 10px 30px;
     border-radius: 10px;
@@ -72,5 +81,15 @@ label {
     @include screen-max-width-767 {
       padding: 5px 10px;
     }
+  }
+}
+
+.password-hidden {
+  i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    background-color: white;
   }
 }
