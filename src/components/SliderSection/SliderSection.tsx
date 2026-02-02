@@ -6,17 +6,17 @@ import Image from "next/image";
 const slides = [
     {
         id: 1,
-        desktop: "/bonus-camp.png",
+        desktop: "/bonus-camp.webp",
         title: "Բարի գալուստ մեր կայք",
     },
     {
         id: 2,
-        desktop: "/bonus-camp3.png",
+        desktop: "/bonus-camp3.webp",
         title: "Խաղա ու շահիր",
     },
     {
         id: 3,
-        desktop: "/bonus-camp2.png",
+        desktop: "/bonus-camp2.webp",
         title: "Մասնակցիր մրցաշարերին",
     },
 ];
