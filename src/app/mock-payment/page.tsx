@@ -20,7 +20,6 @@ export default function MockPayment() {
         setProvider(prov || "unknown");
     }, [searchParams]);
 
-    // ✅ Մոդելավորում ենք "բանկային հաստատում"
     const handlePayment = async (result: "success" | "fail") => {
         if (!amount) return;
         setLoading(true);
@@ -38,7 +37,6 @@ export default function MockPayment() {
             const userId = session.user.id;
 
             if (result === "success") {
-                // ✅ Վճարումը հաջողվել է — balance ավելացնում ենք
                 const { error } = await supabase.rpc("increment_user_balance", {
                     _user_id: userId,
                     _amount: amount,

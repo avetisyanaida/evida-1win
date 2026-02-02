@@ -4,8 +4,6 @@ import { supabaseAdmin } from "@/src/hooks/supabaseAdmin";
 
 export async function POST(req: Request) {
     try {
-        console.log("🔥 WITHDRAW ROUTE HIT 🔥");
-
         const { user_id, amount, method, card_id } = await req.json();
         const parsedAmount = Number(amount);
 
@@ -26,8 +24,6 @@ export async function POST(req: Request) {
             );
         }
 
-        console.log("BEFORE BALANCE ↓");
-
         const { error: balErr } = await supabaseAdmin.rpc("decrement_balance", {
             p_user_id: user_id,
             p_amount: parsedAmount,
@@ -37,8 +33,6 @@ export async function POST(req: Request) {
             console.error("BALANCE ERROR:", balErr);
             return NextResponse.json({ error: balErr.message }, { status: 500 });
         }
-
-        console.log("AFTER BALANCE ↓");
 
         const { data: withdraw } = await supabaseAdmin
             .from("withdraw_requests")

@@ -19,7 +19,6 @@ export async function POST(req: Request) {
         );
     }
 
-    // 🔹 ստուգում ենք balance-ը
     const { data: user, error: uErr } = await supabase
         .from("users")
         .select("balance")
@@ -33,7 +32,6 @@ export async function POST(req: Request) {
         );
     }
 
-    // 🔹 ստեղծում ենք withdraw request
     const { data: withdraw, error: wErr } = await supabase
         .from("withdraw_requests")
         .insert({

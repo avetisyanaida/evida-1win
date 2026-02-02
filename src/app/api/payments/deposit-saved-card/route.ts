@@ -16,7 +16,6 @@ export async function POST(req: Request) {
         );
     }
 
-    // 🔐 ստուգում ենք՝ քարտը user-ինն է
     const { data: card } = await supabase
         .from("cards")
         .select("id")
@@ -31,7 +30,6 @@ export async function POST(req: Request) {
         );
     }
 
-    // 💰 balance ավելացում
     const { error: balErr } = await supabase.rpc("increment_balance", {
         p_user_id: user_id,
         p_amount: amount,
@@ -52,7 +50,6 @@ export async function POST(req: Request) {
         method: "card",
     });
 
-    // 🔄 վերադարձնում ենք թարմ balance-ը
     const { data: user } = await supabase
         .from("users")
         .select("balance")
