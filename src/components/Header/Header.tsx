@@ -200,7 +200,6 @@ export const Header = ({
                             <AuthButtons
                                 onLoginClick={onLoginClick}
                                 onSignupClick={onSignupClick}
-                                t={t}
                             />
                         ) : (
                             <>
@@ -242,7 +241,6 @@ export const Header = ({
                                 <AuthButtons
                                     onLoginClick={onLoginClick}
                                     onSignupClick={onSignupClick}
-                                    t={t}
                                 />
                                 <LangSwitcher/>
                             </>

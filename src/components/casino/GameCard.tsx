@@ -5,6 +5,7 @@ import type { CasinoGame } from "@/src/types/casino";
 import { ModalComponent } from "@/src/components/ModalComponent/ModalComponent";
 import Image from "next/image";
 import {useTranslation} from "react-i18next";
+import {gaEvent} from "@/src/lib/ga";
 
 const SUPABASE_PUBLIC_URL = "https://yxqgxsxseunohktzuxbm.supabase.co/storage/v1/object/public/casino-assets";
 
@@ -22,6 +23,19 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
 
     const [isMobile, setIsMobile] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        if (!isDemoOpen) return;
+
+        // ✅ GA event — demo actually started
+        gaEvent("demo_play", {
+            game_id: game.id,
+            game_name: game.title,
+            provider: game.provider || "unknown",
+            mode: "demo",
+        });
+    }, [isDemoOpen]);
+
 
     useEffect(() => {
         const checkIsMobile = () => setIsMobile(window.innerWidth <= 767);
@@ -56,12 +70,21 @@ export const GameCard = ({ game }: { game: CasinoGame }) => {
     const handleDemo = () => {
         if (!game.demoUrl) return;
 
+        gaEvent("game_open", {
+            game_id: game.id,
+            game_name: game.title,
+            provider: game.provider || "unknown",
+            mode: "demo",
+            device: isMobile ? "mobile" : "desktop",
+        });
+
         if (isMobile) {
             window.location.href = game.demoUrl;
         } else {
             setIsDemoOpen(true);
         }
     };
+
 
     return (
         <>
