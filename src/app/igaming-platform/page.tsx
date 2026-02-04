@@ -2,11 +2,25 @@ import Link from "next/link";
 
 export default function IgamingPlatformPage() {
     return (
-        <main style={{ padding: "40px", maxWidth: "900px", margin: "0 auto", color: 'white', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h2>Casino Platform Demo for iGaming Projects</h2>
-            <p style={{color:'white'}}>
+        <main
+            style={{
+                padding: "40px",
+                maxWidth: "900px",
+                margin: "0 auto",
+                color: "#fff",
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+            }}
+        >
+            <h1>Casino Platform Demo for iGaming Projects</h1>
+
+            <p>
                 <strong>Contact:</strong>{" "}
-                <Link rel={'preconnect'} style={{color: 'white'}} href="mailto:evidacasino@gmail.com">
+                <Link
+                    href="mailto:evidacasino@gmail.com"
+                    style={{ color: "#fff", textDecoration: "underline" }}
+                >
                     evidacasino@gmail.com
                 </Link>
             </p>
@@ -18,14 +32,15 @@ export default function IgamingPlatformPage() {
             </p>
 
             <p>
-                <strong>This is NOT a live casino.</strong><br />
+                <strong>This is NOT a live casino.</strong>
+                <br />
                 Games and payment providers are not integrated.
                 The platform is built as a software demo for startups,
                 affiliates, and iGaming projects.
             </p>
 
-            <h2 style={{textAlign: 'left'}}>Key features:</h2>
-            <ul style={{color: 'white'}}>
+            <h2>Key features</h2>
+            <ul>
                 <li>User authentication and profiles</li>
                 <li>Wallet and balance logic</li>
                 <li>Admin dashboard</li>
@@ -33,7 +48,9 @@ export default function IgamingPlatformPage() {
             </ul>
 
             <p>
-                <strong>Looking for iGaming projects, contracts, or partnerships.</strong>
+                <strong>
+                    Looking for iGaming projects, contracts, or partnerships.
+                </strong>
             </p>
         </main>
     );

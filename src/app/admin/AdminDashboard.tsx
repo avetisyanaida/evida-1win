@@ -37,7 +37,7 @@ export default function AdminDashboard({ verifs, users }: AdminDashboardProps) {
 
     return (
         <div className={'dashboard-wrap'}>
-            <h1  className={'dashboard-title'}>🛠 Admin Dashboard</h1>
+            <h2  className={'dashboard-title'}>🛠 Admin Dashboard</h2>
 
             <div className={'dashboard-body'}>
                 <h2 className={'dashboard-body-title'}>📁 Վերիֆիկացիայի փաստաթղթերը</h2>
