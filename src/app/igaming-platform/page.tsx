@@ -1,7 +1,7 @@
 export default function IgamingPlatformPage() {
     return (
         <main style={{ padding: "40px", maxWidth: "900px", margin: "0 auto", color: 'white', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h1>Casino Platform Demo for iGaming Projects</h1>
+            <h2>Casino Platform Demo for iGaming Projects</h2>
             <p style={{color:'white'}}>
                 <strong>Contact:</strong>{" "}
                 <a style={{color: 'white'}} href="mailto:evidacasino@gmail.com">

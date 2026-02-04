@@ -1,18 +1,13 @@
+import Link from "next/link";
+
 export const Platform = () => {
     return <section>
         <div className="container">
-            <div style={{backgroundColor:'red', display:'flex', flexDirection: 'column', gap: '10px', padding: '10px', minHeight: '56px'}}>
-                <p style={{color: 'white'}}>  Built as a <strong>technical demo of a casino platform</strong> for iGaming startups and affiliates.{" "}</p>
-                <a style={{color: 'white'}} href="/igaming-platform">View platform details</a>
+            <div className={'platform-content'}>
+                <p>  Built as a technical demo of a casino platform for iGaming startups and affiliates.</p>
+                <Link href="/igaming-platform">View platform details</Link>
             </div>
         </div>
     </section>
 
 }
-
-
-
-//<p style={{color: 'white'}}>
-//
-//
-//     </p>

@@ -29,6 +29,7 @@
 @use "components/admin/login/AdminLoginForm";
 @use "components/ChatUser/ChatUser";
 @use "components/Login/ResetPassword";
+@use 'components/Platform/Platform';
 
 @use 'components/deposit-saved-card/deposit-saved-card';
 @use 'components/withdrawAdmin/withdrawAdmin';
