@@ -24,10 +24,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
             />
             <meta
                 name="description"
-                content="EVIDA Casino — Online slots, live casino, bonuses and tournaments."
+                content="Casino platform technical demo with admin panel, wallet logic and user management. Built for iGaming projects and startups."
             />
             <link rel="icon" type="image/png" href="/logo-profile.webp" />
-            <title>EVIDA CASINO</title>
+            <title>Casino Platform Demo | iGaming Admin & Wallet System</title>
 
             {/* 🔥 GOOGLE ANALYTICS */}
             <Script
