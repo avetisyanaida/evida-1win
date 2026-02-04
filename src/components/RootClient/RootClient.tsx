@@ -72,11 +72,11 @@ export default function RootClient({ children }: PropsWithChildren) {
 
             {!isAdmin && showFullLayout && (
                 <>
-                    <Platform/>
                     <HeaderMenu />
                     <SliderSection />
                     <ProvidersStrip/>
                     <TabsComponent />
+                    <Platform/>
                     <NavWrap onLoginClick={() => setIsOpenLogin(true)} />
                     <ChatUser/>
                     <Footer />
