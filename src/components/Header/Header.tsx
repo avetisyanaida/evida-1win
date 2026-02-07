@@ -10,6 +10,7 @@ import {LangSwitcher} from "@/src/components/SwitcherComponent/Switcher";
 import {AuthButtons} from "./AuthButtons";
 import {UserMenu} from "./UserMenu";
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeaderProps {
     isLoggedIn: boolean;
@@ -203,8 +204,14 @@ export const Header = ({
                             />
                         ) : (
                             <>
-                                <li><i className="icon coupon"></i></li>
-                                <li><i className="icon promotion"></i></li>
+                                <li>
+                                    <Link
+                                        href={'/play'}
+                                        className="play-real-btn"
+                                    >
+                                        🎰 Խաղալ իրական գումարով
+                                    </Link>
+                                </li>
 
                                 <li className="profile-deposit">
                                     <button className={'user-info-btn'} onClick={handleDeposit}>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { gaEvent } from "@/src/lib/ga";
+import Link from "next/link";
 
 interface AuthButtonsProps {
     onLoginClick?: () => void;
@@ -28,6 +29,11 @@ export const AuthButtons = ({ onLoginClick, onSignupClick }: AuthButtonsProps) =
 
     return (
         <>
+            <li>
+                <Link href={'/play'} className={'play-real-btn'}>
+                    🎰 Խաղալ իրական գումարով
+                </Link>
+            </li>
             <li>
                 <button className="login-btn log" onClick={handleLoginClick}>
                     {t("login")}

@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 import { CasinoProvider } from "@/src/components/CasinoContext/CasinoContext";
 import { Header } from "@/src/components/Header/Header";
 import { HeaderMenu } from "@/src/components/Header/HeaderMenu";
-import { SliderSection } from "@/src/components/SliderSection/SliderSection";
 import { TabsComponent } from "@/src/components/TabsComponent/TabsComponent";
 import { Login } from "@/src/components/Login/Login";
 import { AdminComponent } from "@/src/components/SignUp/AdminComponent";
@@ -20,6 +19,7 @@ import { useAccountLimit } from "@/src/hooks/useAccountLimit";
 import { useScrollTop } from "@/src/hooks/useScrollTop";
 import { useUser } from "@/src/context/UserContext";
 import {ProvidersStrip} from "@/src/components/ProvidersStrip/ProvidersStrip";
+import {HeroBanner} from "@/src/components/HeroBanner/HeroBanner";
 
 
 export default function RootClient({ children }: PropsWithChildren) {
@@ -72,7 +72,7 @@ export default function RootClient({ children }: PropsWithChildren) {
             {!isAdmin && showFullLayout && (
                 <>
                     <HeaderMenu />
-                    <SliderSection />
+                    <HeroBanner/>
                     <ProvidersStrip/>
                     <TabsComponent />
                     <NavWrap onLoginClick={() => setIsOpenLogin(true)} />
