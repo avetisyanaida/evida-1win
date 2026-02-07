@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./HeroBanner.module.scss";
 
 const ONEX_LINK =
@@ -15,7 +14,7 @@ export const HeroBanner = () => {
             });
         }
 
-        window.open(ONEX_LINK, "_blank", "noopener,noreferrer");
+        window.open(ONEX_LINK, "noopener,noreferrer");
     };
 
     return (
