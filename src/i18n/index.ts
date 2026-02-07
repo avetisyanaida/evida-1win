@@ -8,16 +8,16 @@ import ru from "../locales/ru.json";
 import hy from "../locales/hy.json";
 
 const resources = {
+    ru: { translation: ru },
     hy: { translation: hy },
     en: { translation: en },
-    ru: { translation: ru },
 };
 
 if (!i18next.isInitialized) {
     i18next.use(initReactI18next).init({
         resources,
-        lng: "hy",          // ✅ միշտ en
-        fallbackLng: "hy",
+        lng: "ru",
+        fallbackLng: "ru",
         interpolation: { escapeValue: false },
     });
 }

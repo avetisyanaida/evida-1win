@@ -3,53 +3,46 @@
 import Image from "next/image";
 import styles from "./HeroBanner.module.scss";
 
-const GOODWIN_LINK =
-    "https://goodwin.am/open/register?btag=ag101636&agent_terms=true&agent_redirect=true";
+const ONEX_LINK =
+    "https://reffpa.com/L?tag=d_5228134m_97c_tiktok_hero_telegram_channel&site=5228134&ad=97"
 
 export const HeroBanner = () => {
     const handleClick = () => {
         if (typeof window !== "undefined" && (window as any).gtag) {
-            (window as any).gtag("event", "goodwin_cta_click", {
+            (window as any).gtag("event", "1x_cta_click", {
                 event_category: "affiliate",
-                event_label: "hero_banner",
+                event_label: "hero_banner_1x",
             });
         }
 
-        window.open(GOODWIN_LINK, "_blank", "noopener,noreferrer");
+        window.open(ONEX_LINK, "_blank", "noopener,noreferrer");
     };
 
     return (
-        <section className={styles.hero}>
-            <div className={styles.content}>
-                <span className={styles.badge}>🔥 TOP OFFER</span>
+        <section className={styles.hero} style={{backgroundImage: "url(/1st-wide.webp)"}}>
+            <div className="container">
+                <div className={styles.content}>
+                    <span className={styles.badge}>🔥 TOP OFFER</span>
 
-                <h1>🎁 Welcome Bonus</h1>
+                    <h2>💥 100% бонус на первый депозит</h2>
 
-                <ul>
-                    <li>💰 Մինչև <b>25,000 դրամ</b> բոնուս</li>
-                    <li>🎰 <b>100 Free Spins</b></li>
-                    <li>⚡ <b>100% Welcome Bonus</b></li>
-                </ul>
+                    <ul>
+                        <li>💰 До <b>60 000 AMD</b> бонус</li>
+                        <li>⚡ <b>100%</b> на первое пополнение</li>
+                        <li>🕒 Активация за <b>1–2 минуты</b></li>
+                    </ul>
 
-                <button
-                    onClick={handleClick}
-                    className={styles.cta}
-                >
-                    🎮 Ստանալ բոնուսը
-                </button>
+                    <button
+                        onClick={handleClick}
+                        className={styles.cta}
+                    >
+                        👉 Получить бонус
+                    </button>
 
-                <p className={styles.note}>
-                    ⏳ Առաջարկը գործում է նոր գրանցվողների համար
-                </p>
-            </div>
-
-            <div className={styles.image}>
-                <Image
-                    src="/heroBanner.jpg"
-                    alt="Goodwin Welcome Bonus"
-                    fill
-                    priority
-                />
+                    <p className={styles.note}>
+                        ⚠️ Только для новых пользователей · 21+
+                    </p>
+                </div>
             </div>
         </section>
     );

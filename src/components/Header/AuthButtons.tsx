@@ -31,7 +31,7 @@ export const AuthButtons = ({ onLoginClick, onSignupClick }: AuthButtonsProps) =
         <>
             <li>
                 <Link href={'/play'} className={'play-real-btn'}>
-                    🎰 Խաղալ իրական գումարով
+                    🎰 Играть на реальные деньги
                 </Link>
             </li>
             <li>
