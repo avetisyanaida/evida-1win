@@ -14,7 +14,7 @@ export const HeroBanner = () => {
             });
         }
 
-        window.open(ONEX_LINK, "noopener,noreferrer");
+        window.location.href = ONEX_LINK;
     };
 
     return (
