@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./HeroBanner.module.scss";
 
 const ONEX_LINK =
-    "https://reffpa.com/L?tag=d_5228134m_97c_tiktok_hero_telegram_channel&site=5228134&ad=97"
+    "https://reffpa.com/L?tag=d_5229724m_97c_tiktok_telegram&site=5229724&ad=97"
 
 export const HeroBanner = () => {
     const handleClick = () => {
