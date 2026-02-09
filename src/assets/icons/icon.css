@@ -11,78 +11,97 @@
     font-size: 16px;
     background-color: #000;
 }
+
 .icon.close {
     mask-image: url(./close.svg);
     -webkit-mask-image: url(./close.svg);
 }
+
 .icon.coupon {
     mask-image: url(./coupon.svg);
     -webkit-mask-image: url(./coupon.svg);
 }
+
 .icon.promotion {
     mask-image: url(./promotion.svg);
     -webkit-mask-image: url(./promotion.svg);
 }
+
 .icon.balance {
     mask-image: url(./balance.svg);
     -webkit-mask-image: url(./balance.svg);
 }
+
 .icon.deposit {
     mask-image: url(./deposit.svg);
     -webkit-mask-image: url(./deposit.svg);
 }
+
 .icon.withdraw {
     mask-image: url(./withdraw.svg);
     -webkit-mask-image: url(./withdraw.svg);
 }
+
 .icon.card {
     mask-image: url(./card.svg);
     -webkit-mask-image: url(./card.svg);
 }
+
 .icon.log-out {
     mask-image: url(./log-out.svg);
     -webkit-mask-image: url(./log-out.svg);
 }
+
 .icon.arrow-top {
     mask-image: url(./arrow-top.svg);
     -webkit-mask-image: url(./arrow-top.svg);
 }
+
 .icon.arrow-down {
     mask-image: url(./arrow-down.svg);
     -webkit-mask-image: url(./arrow-down.svg);
 }
+
 .icon.history {
     mask-image: url(./history.svg);
     -webkit-mask-image: url(./history.svg);
 }
+
 .icon.notification {
     mask-image: url(./notification.svg);
     -webkit-mask-image: url(./notification.svg);
 }
+
 .icon.bonus {
     mask-image: url(./bonus.svg);
     -webkit-mask-image: url(./bonus.svg);
 }
+
 .icon.personal {
     mask-image: url(./personal.svg);
     -webkit-mask-image: url(./personal.svg);
 }
+
 .icon.logout {
     mask-image: url(./logout.svg);
     -webkit-mask-image: url(./logout.svg);
 }
+
 .icon.verification {
     mask-image: url(./verification.svg);
     -webkit-mask-image: url(./verification.svg);
 }
+
 .icon.limits {
     mask-image: url(./limits.svg);
     -webkit-mask-image: url(./limits.svg);
 }
+
 .icon.eye-open {
     mask-image: url(./eye-open.svg);
     -webkit-mask-image: url(./eye-open.svg);
 }
+
 .icon.eye-close {
     mask-image: url(./eye-close.svg);
     -webkit-mask-image: url(./eye-close.svg);
@@ -92,35 +111,41 @@
     mask-image: url(./email.svg);
     -webkit-mask-image: url(./email.svg);
 }
+
 .icon.phone {
     mask-image: url(./phone.svg);
     -webkit-mask-image: url(./phone.svg);
 }
+
 .icon.id {
     mask-image: url(./id.svg);
     -webkit-mask-image: url(./id.svg);
 }
+
 .icon.menu {
     mask-image: url(./menu.svg);
     -webkit-mask-image: url(./menu.svg);
 }
+
 .icon.wallet {
     mask-image: url(./wallet.svg);
     -webkit-mask-image: url(./wallet.svg);
 }
+
 .icon.casino {
     mask-image: url(./casino.svg);
     -webkit-mask-image: url(./casino.svg);
 }
+
 .icon.live-casino {
     mask-image: url(./live-casino.svg);
     -webkit-mask-image: url(./live-casino.svg);
 }
+
 .icon.balloon {
     mask-image: url(./balloon.svg);
     -webkit-mask-image: url(./balloon.svg);
 }
-
 
 
 .icon.armenia {
@@ -128,17 +153,25 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .icon.russia {
     background-image: url(./russia.svg);
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .icon.usa {
     background-image: url(./usa.svg);
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .icon.delete-card {
     mask-image: url(./delete-card.svg);
     -webkit-mask-image: url(./delete-card.svg);
+}
+
+.icon.telegram {
+    mask-image: url(./telegram.svg);
+    -webkit-mask-image: url(./telegram.svg);
 }
