@@ -3,7 +3,7 @@
 import styles from "./HeroBanner.module.scss";
 
 const ONEX_LINK =
-    "https://reffpa.com/L?tag=d_5229724m_97c_tiktok_telegram&site=5229724&ad=97"
+    "https://refpa749456.pro/L?tag=s_5233256m_355c_tg_ru_tik_tok&site=5233256&ad=355"
 
 export const HeroBanner = () => {
     const handleClick = () => {
@@ -18,28 +18,28 @@ export const HeroBanner = () => {
     };
 
     return (
-        <section className={styles.hero} style={{backgroundImage: "url(/1st-wide.webp)"}}>
+        <section className={styles.hero}>
             <div className="container">
                 <div className={styles.content}>
-                    <span className={styles.badge}>🔥 TOP OFFER</span>
+                    <span className={styles.badge}>🔥 SPECIAL OFFER</span>
 
-                    <h2>💥 100% бонус на первый депозит</h2>
+                    <h2>💥 Приветственный бонус для новых пользователей</h2>
 
                     <ul>
-                        <li>💰 До <b>60 000 AMD</b> бонус</li>
-                        <li>⚡ <b>100%</b> на первое пополнение</li>
-                        <li>🕒 Активация за <b>1–2 минуты</b></li>
+                        <li>💰 Бонус на первый депозит</li>
+                        <li>🎮 Казино и спортивные ставки</li>
+                        <li>⚡ Регистрация за несколько минут</li>
                     </ul>
 
                     <button
                         onClick={handleClick}
                         className={styles.cta}
                     >
-                        👉 Получить бонус
+                        👉 Получить предложение
                     </button>
 
                     <p className={styles.note}>
-                        ⚠️ Только для новых пользователей · 21+
+                        ⚠️ 21+ · Партнёрский ресурс · Применяются условия
                     </p>
                 </div>
             </div>
