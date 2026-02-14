@@ -195,7 +195,7 @@ export const Header = ({
                             loading={"eager"}
                         />
                     </button>
-                    <Link href={'https://app.leadteh.ru/w/fmNnu'} target={'_blank'}style={{
+                    <Link href={'https://app.leadteh.ru/w/foHSK'} target={'_blank'}style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
