@@ -3,14 +3,14 @@
 import styles from "./HeroBanner.module.scss";
 
 const ONEX_LINK =
-    "https://refpa749456.pro/L?tag=s_5233256m_355c_tg_ru_tik_tok&site=5233256&ad=355"
+    "https://1w.run/?p=zbpm"; // <- ստեղ դիր քո 1win affiliate link-ը
 
 export const HeroBanner = () => {
     const handleClick = () => {
         if (typeof window !== "undefined" && (window as any).gtag) {
-            (window as any).gtag("event", "1x_cta_click", {
+            (window as any).gtag("event", "1win_cta_click", {
                 event_category: "affiliate",
-                event_label: "hero_banner_1x",
+                event_label: "hero_banner_1win",
             });
         }
 
@@ -21,25 +21,22 @@ export const HeroBanner = () => {
         <section className={styles.hero}>
             <div className="container">
                 <div className={styles.content}>
-                    <span className={styles.badge}>🔥 SPECIAL OFFER</span>
+                    <span className={styles.badge}>🔥 1WIN BONUS</span>
 
-                    <h2>💥 Приветственный бонус для новых пользователей</h2>
+                    <h2>🚀 Забери бонус 500% прямо сейчас</h2>
 
                     <ul>
                         <li>💰 Бонус на первый депозит</li>
-                        <li>🎮 Казино и спортивные ставки</li>
-                        <li>⚡ Регистрация за несколько минут</li>
+                        <li>🎰 Онлайн-казино и ставки на спорт</li>
+                        <li>⚡ Быстрая регистрация и моментальные выплаты</li>
                     </ul>
 
-                    <button
-                        onClick={handleClick}
-                        className={styles.cta}
-                    >
-                        👉 Получить предложение
+                    <button onClick={handleClick} className={styles.cta}>
+                        👉 Забрать бонус
                     </button>
 
                     <p className={styles.note}>
-                        ⚠️ 21+ · Партнёрский ресурс · Применяются условия
+                        ⚠️ 21+ · Партнёрский сайт · Возможны финансовые риски
                     </p>
                 </div>
             </div>
