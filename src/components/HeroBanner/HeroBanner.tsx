@@ -3,7 +3,7 @@
 import styles from "./HeroBanner.module.scss";
 
 const ONEX_LINK =
-    "https://1w.run/?p=zbpm"; // <- ստեղ դիր քո 1win affiliate link-ը
+    "https://1wkzid.com/casino?p=z76b&sub1=telegram&sub2=tik_tok&sub3=site_url"
 
 export const HeroBanner = () => {
     const handleClick = () => {
