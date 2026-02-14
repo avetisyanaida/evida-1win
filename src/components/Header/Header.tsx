@@ -184,7 +184,7 @@ export const Header = ({
     return (
         <div className="container">
             <div className="main-block-item">
-                <div className={'logo-tel'} style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                <div className={'logo-tel header-main'} style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                     <button className="logo-profile" onClick={handleMenuHover}>
                         <Image
                             src={!isMobile ? "/evida-casino.svg" : "/evida-text.svg"}
@@ -211,7 +211,7 @@ export const Header = ({
 
 
                 {!isTabletLarge ? (
-                    <ul className="user-info">
+                    <ul className="user-info header-main">
                         {!isLoggedIn ? (
                             <AuthButtons
                                 onLoginClick={onLoginClick}
@@ -248,7 +248,7 @@ export const Header = ({
                         </li>
                     </ul>
                 ) : (
-                    <ul className="user-info">
+                    <ul className="user-info header-main">
                         {!isLoggedIn ? (
                             <>
                                 <AuthButtons

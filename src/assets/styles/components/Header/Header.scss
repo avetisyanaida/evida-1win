@@ -18,14 +18,18 @@
     @include screen-max-width-567 {
       width: 140px;
     }
-    @include screen-max-width-430 {
-      width: 120px;
+    @include screen-max-width-460 {
+      display: none;
     }
+  }
+  .header-main {
+    width: calc(50% - 10px);
   }
   .user-info {
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: end;
     @include screen-max-width-767 {
       gap: 10px;
     }
@@ -191,6 +195,9 @@
         .lang-selected {
           background-color: transparent;
           padding: 0;
+        }
+        @include screen-max-width-567 {
+          position: absolute;
         }
       }
     }

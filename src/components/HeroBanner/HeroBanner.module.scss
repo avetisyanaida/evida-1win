@@ -29,12 +29,13 @@
   padding: 40px;
   color: #fff;
   position: relative;
-  z-index: 999;
+  //z-index: 999;
   @include screen-max-width-767 {
     background: #18133b;
     border-radius: 10px;
     margin: 20px 0;
     max-width: 100%;
+    padding: 20px;
   }
 
   h2 {

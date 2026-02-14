@@ -73,8 +73,8 @@
   }
 }
 
-@mixin screen-max-width-430 {
-  @media (max-width: $max-width-430) {
+@mixin screen-max-width-460 {
+  @media (max-width: $max-width-460) {
     @content;
   }
 }
